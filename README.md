@@ -8,3 +8,5 @@ This project includes my solution and write-up for a Computational Physics class
 - [ ] Monte Carlo method, see folder `MC`
 - [ ] Numerical Simulation, see folder `numerical` - optimize rod distance in Chicago-Pile 1
 - [ ] Finite Element Analysis (FEA), see folder `FEA` - apply FEA technique in a heat diffusion example
+
+## Another 
