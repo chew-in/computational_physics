@@ -1,12 +1,13 @@
-# Computational Physics
-This project includes my solution and write-up for a Computational Physics class I was teaching, where we solve interesting problems in physics, in FORTRAN 77 and Python. 
+# Random Number Generator
 
-## Table of Content
-- [ ] Random Number Generator (RNG), see folder `RNG` - introduce and perform statistical analysis on various common techniques for RNG
-- [ ] Cellular Automaton & Emergence, see folder `emergence` - build Conway’s game of life and simulate collective behavior
-- [ ] Artificial Neural Network (ANN), see folder `ANN` - understand how deep learning works under the hood
-- [ ] Monte Carlo method, see folder `MC`
-- [ ] Numerical Simulation, see folder `numerical` - optimize rod distance in Chicago-Pile 1
-- [ ] Finite Element Analysis (FEA), see folder `FEA` - apply FEA technique in a heat diffusion example
+## Introduction 
+Random Number Generators (RNG) are used for...
+In this project, I study xx different RNGs: `RND()`, `RANDM()`, `RANDU`, `RANDOM_NUMBER`, `R250` generator, routine from Numerical Recipe, and a paper posted on Canvas. For each RNG, I will 1) explain how the random number is generated, 2) test and visualize the performance of the random numbers generated, 3) conclude about the respective qualities of these RNGs. I will test the RNGs in a few ways with various degree of statistical rigor: 1) sort the random numbers in histogram bins and check for statistically significant deviations from the mean (vary the seed, and the numerical precision of the variable holding the random number), 2) examine correlations between triplets, 3) plot the frequency of appearance of 0-9 integers at a certain decimal position, 4) implement the "maximum spacing" method in J. Heinrich's paper. 
 
-## Another 
+## Fundamentals of RNGs
+[Visit OpenAI](https://www.openai.com)
+
+## Performance Testing of the RNGs
+
+How the histogram works. 
+Can make fancy plots for the distribution - q-q plot, chi-square distribution, sigma testing, with brief justification, 3D plots (random angle, and find the angle that display the bad structure) 
