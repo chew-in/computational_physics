@@ -24,11 +24,16 @@ Several of the RNGs uses an algorithm called linear congruential generator (LCG)
 
 ## Performance Testing of the RNGs
 I will test the RNGs in a few ways with various degree of statistical rigor: 
-1. The histogram test. We sort the random numbers in histogram bins and check for statistically significant deviations from the mean (vary the seed, and the numerical precision of the variable holding the random number). Note that we are not measuring the mean and the standard deviation of the random numbers directly, but rather the count of them in each bin. In `rnd_test.f`, we set the number of bins to be 100000 by the variable `PRECIS`, which determines the precision of the random variable to be 5 digits after the decimal point. After initializing the bins, we then call each RNG algorithm under test $100 \times 100000$ times. So we expect that on average each bin has $\mu = 100$ count of numbers, and the standard error of the count is $\sigma = \sqrt(\mu) = 10$. We set the threshold of our confidence interval to be 4, meaning that a bin is flagged as anomalous if the count of random numbers contained it in is at least $4\sigma = 40$ away from the mean. `rndtest.out1` stores information of all bins - bin number, hits in bin, standard error (which is a constant). `rndtest.out2` stores information about the anomaly bins - bin number, hits in bin, and numbers of sigma away from the mean.
+### The histogram tes
+We sort the random numbers in histogram bins and check for statistically significant deviations from the mean (vary the seed, and the numerical precision of the variable holding the random number). Note that we are not measuring the mean and the standard deviation of the random numbers directly, but rather the count of them in each bin. In `rnd_test.f`, we set the number of bins to be $100000$ by the variable `PRECIS`, which determines the precision of the random variable to be 5 digits after the decimal point. After initializing the bins, we then call each RNG algorithm under test $100 \times 100000$ times. So we expect that on average each bin has $\mu = 100$ count of numbers, and the standard error of the count is $\sigma = \sqrt{\mu} = 10$. We set the threshold of our confidence interval to be $4$, meaning that a bin is flagged as anomalous if the count of random numbers contained it in is at least $4\sigma = 40$ away from the mean. `rndtest.out1` stores information of all bins - bin number, hits in bin, standard error (which is a constant). `rndtest.out2` stores information about the anomaly bins - bin number, hits in bin, and numbers of sigma away from the mean.
 See this plot ![Alt text](./0_picture.png)
-1. examine correlations between triplets
-1. plot the frequency of appearance of 0-9 integers at a certain decimal position
-1. implement the "maximum spacing" method in J. Heinrich's paper
+### examine correlations between triplets
+### plot the frequency of appearance of 0-9 integers at a certain decimal position
+### implement the "maximum spacing" method in J. Heinrich's paper
+
+<picture>
+ <img alt="YOUR-ALT-TEXT" src="YOUR-DEFAULT-IMAGE">
+</picture>
 
 Here are several ways of testing the quality of a random number generator. 
 
