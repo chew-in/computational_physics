@@ -17,23 +17,21 @@ In this project, I study xx different PRNGs: `rnd`, `randm`, `randu`, `random_nu
 ## Mechanisms of the RNGs
 Several of the RNGs uses an algorithm called linear congruential generator (LCG), which yields a sequence of pseudo-randomized numbers calculated with a discontinuous piecewise linear equation. The generator is defined by the recurrence relation $$X_{n+1} =  (a X_n + c) \mod m$$, where $X$ is the sequence of pseudorandom values, and $m$ is the modulus, $a$ is the multiplier, $c$ is the increment, $X_0$ is the seed or start value. LCGs are easy to implement and computationally efficient but have limitations in terms of the quality of randomness they produce. They are often used in applications where cryptographic-level randomness is not required, such as simple simulations and games. 
 
-1. `rand`, with source code in `rand.f`, is an implicit function in FORTRAN, where the seed can be set by calling `srand(77977)`.  The program overall generates 1000 such random numbers and save in a file `rand.in`.
-1. `randm`, with source code in `randm.f`, is a linear congruential generator with $m = 2^31$, $a = 6539$, and $c=0$ which makes it a multiplicative linear congruential generator (MCG). We start with a seed value of $X_0 = 77777$. The subroutine then scales the numbers back to $0$ to $1$ by multiplying the resultant integer by $2^{-31}$. The program overall generates 1000 such random numbers and save in a file `rand.in`.
-1. `randu`, with source code in `randu.f` as copied from [this file](http://physics.ucsc.edu/~peter/115/randu.pdf) that illustrates its pitfalls, is another linear congruential generator from IBM with $m = 2^31$, $a = 65539$, and $c=0$. We start with a seed value of $X_0 = 77777$. Even though the moments of the sample of numbers generated look quite good, `randu` fails badly with regards to the numbers being free of correlations with each other. Setting a seed value of $X_0 = 314159$ will reproduce the integer lines of the triplets $9x-6y+z$. 
+1. `rand`, with source code in `rand.f`, is an implicit function in FORTRAN, where the seed can be set by calling `srand(77777)`.  The program overall generates 1000 such random numbers and save in a file `rand.in`.
+1. `randm`, with source code in `randm.f`, is a linear congruential generator with $m = 2^31$, $a = 6539$, and $c=0$ which makes it a multiplicative linear congruential generator (MCG). We start with a seed value $X_0$. The subroutine then scales the numbers back to $0$ to $1$ by multiplying the resultant integer by $2^{-31}$. The program overall generates 1000 such random numbers and save in a file `rand.in`.
+1. `randu`, with source code in `randu.f` as copied from [this file](http://physics.ucsc.edu/~peter/115/randu.pdf) that illustrates its pitfalls, is another linear congruential generator from IBM with $m = 2^31$, $a = 65539$, and $c=0$. We start with a seed value $X_0$. Even though the moments of the sample of numbers generated look quite good, `randu` fails badly with regards to the numbers being free of correlations with each other. Setting a seed value of $X_0 = 314159$ will reproduce the integer lines of the triplets $9x-6y+z$. 
 1. `random_number`, with source code in `random_number.f`, is an implicit function in FORTRAN with documentation in [this link](https://gcc.gnu.org/onlinedocs/gfortran/RANDOM_005fNUMBER.html), implements the xoshiro256** pseudorandom number generator (PRNG). This generator has a period of $2^{256} - 1$.
 
 ## Performance Testing of the RNGs
 I will test the RNGs in a few ways with various degree of statistical rigor: 
-### The histogram tes
-We sort the random numbers in histogram bins and check for statistically significant deviations from the mean (vary the seed, and the numerical precision of the variable holding the random number). Note that we are not measuring the mean and the standard deviation of the random numbers directly, but rather the count of them in each bin. In `rnd_test.f`, we set the number of bins to be $100000$ by the variable `PRECIS`, which determines the precision of the random variable to be 5 digits after the decimal point. After initializing the bins, we then call each RNG algorithm under test $100 \times 100000$ times. So we expect that on average each bin has $\mu = 100$ count of numbers, and the standard error of the count is $\sigma = \sqrt{\mu} = 10$. We set the threshold of our confidence interval to be $4$, meaning that a bin is flagged as anomalous if the count of random numbers contained it in is at least $4\sigma = 40$ away from the mean. `rndtest.out1` stores information of all bins - bin number, hits in bin, standard error (which is a constant). `rndtest.out2` stores information about the anomaly bins - bin number, hits in bin, and numbers of sigma away from the mean.
-See this plot ![Alt text](./0_picture.png)
+### 1. The histogram test
+We sort the random numbers in histogram bins and check for statistically significant deviations from the mean (vary the seed, and the numerical precision of the variable holding the random number). Note that we are not measuring the mean and the standard deviation of the random numbers directly, but rather the count of them in each bin. In `rnd_test.f`, we set the number of bins to be $100000$ by the variable `PRECIS`, which determines the precision of the random variable to be 5 digits after the decimal point. After initializing the bins, we then call each RNG algorithm under test $100 \times 100000$ times. So we expect that on average each bin has $\mu = 100$ count of numbers, and the standard error of the count is $\sigma = \sqrt{\mu} = 10$. We set the threshold of our confidence interval to be $4$, meaning that a bin is flagged as anomalous if the count of random numbers contained it in is at least $4\sigma = 40$ away from the mean. `rndtest_[test_name].out1` stores information of all bins - bin number, hits in bin, standard error (which is a constant). `rndtest_[test_name].out2` stores information about the anomaly bins - bin number, hits in bin, and numbers of sigma away from the mean.
+
+This ![collection of histogram plots](RNG_histogram_plots.png) display hit counts for the four RNGs with the same seed value of $X_0 = 777$, with anomalous data flagged in red and enlarged for illustration purposes. By central limit theorem, we expect that the distribution of hit counts in each histogram bin approximates a normal distribution, as our sample size of $100000$ bins is sufficient for the CLT to hold. Theoretically, for a normal distribution curve, we expect $6.334E-05$ fraction of data outside $\pm 4\sigma$, or $6.3$ data points for our sample size. So all the RNG algorithms produce more anomalous bins than expected.
+
 ### examine correlations between triplets
 ### plot the frequency of appearance of 0-9 integers at a certain decimal position
 ### implement the "maximum spacing" method in J. Heinrich's paper
-
-<picture>
- <img alt="YOUR-ALT-TEXT" src="0_picture.png">
-</picture>
 
 Here are several ways of testing the quality of a random number generator. 
 
@@ -45,4 +43,4 @@ Testing random # generators 3: cdf6850_badrand-1.pdf Download cdf6850_badrand-1.
 
 
 How the histogram works. 
-Can make fancy plots for the distribution - q-q plot, chi-square distribution, sigma testing, with brief justification, 3D plots (random angle, and find the angle that display the bad structure) 
+Can make fancy plots for the distribution - chi-square distribution, triplet, 3D plots (random angle, and find the angle that display the bad structure) 
