@@ -28,8 +28,14 @@ I will test the RNGs in a few ways with various degree of statistical rigor:
 We sort the random numbers in histogram bins and check for statistically significant deviations from the mean (vary the seed, and the numerical precision of the variable holding the random number). Note that we are not measuring the mean and the standard deviation of the random numbers directly, but rather the count of them in each bin. In `rnd_test.f`, we set the number of bins to be $100000$ by the variable `PRECIS`, which determines the precision of the random variable to be 5 digits after the decimal point. After initializing the bins, we then call each RNG algorithm under test $100 \times 100000$ times. So we expect that on average each bin has $\mu = 100$ count of numbers, and the standard error of the count is $\sigma = \sqrt{\mu} = 10$. We set the threshold of our confidence interval to be $4$, meaning that a bin is flagged as anomalous if the count of random numbers contained it in is at least $4\sigma = 40$ away from the mean. `rndtest_[test_name].out1` stores information of all bins - bin number, hits in bin, standard error (which is a constant). `rndtest_[test_name].out2` stores information about the anomaly bins - bin number, hits in bin, and numbers of sigma away from the mean.
 
 This collection of histogram plots display hit counts for the four RNGs with the same seed value of $X_0 = 777$, with anomalous data flagged in red and enlarged for illustration purposes. By central limit theorem, we expect that the distribution of hit counts in each histogram bin approximates a normal distribution, as our sample size of $100000$ bins is sufficient for the CLT to hold. Theoretically, for a normal distribution curve, we expect $6.334E-5$ fraction of data outside $\pm 4\sigma$, or $6.3$ data points for our sample size. So all the RNG algorithms produce more anomalous bins than expected.
- ![collection of histogram plots](RNG_histogram_flagged_plots.png)
- 
+
+
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="RNG_histogram_flagged_plots.png">
+ <source media="(prefers-color-scheme: light)" srcset="RNG_histogram_flagged_plots.png">
+ <img alt="YOUR-ALT-TEXT" src="RNG_histogram_flagged_plots.png">
+</picture>
+
 ### examine correlations between triplets
 ### plot the frequency of appearance of 0-9 integers at a certain decimal position
 ### implement the "maximum spacing" method in J. Heinrich's paper
@@ -43,5 +49,4 @@ Testing random # generators 2: p1192-parkmiller.pdf Download p1192-parkmiller.pd
 Testing random # generators 3: cdf6850_badrand-1.pdf Download cdf6850_badrand-1.pdf 
 
 
-How the histogram works. 
 Can make fancy plots for the distribution - chi-square distribution, triplet, 3D plots (random angle, and find the angle that display the bad structure) 
