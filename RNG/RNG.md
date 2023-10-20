@@ -32,7 +32,7 @@ See this plot ![Alt text](./0_picture.png)
 ### implement the "maximum spacing" method in J. Heinrich's paper
 
 <picture>
- <img alt="YOUR-ALT-TEXT" src="YOUR-DEFAULT-IMAGE">
+ <img alt="YOUR-ALT-TEXT" src="0_picture.png">
 </picture>
 
 Here are several ways of testing the quality of a random number generator. 
