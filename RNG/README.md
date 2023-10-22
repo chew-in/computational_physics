@@ -45,7 +45,12 @@ Random number generators are the basic tools of stochastic modeling. Bad random 
 </picture>
 
 ### 3. Digit Frequency Test
-plot the frequency of appearance of 0-9 integers at a certain decimal position
+An ideal random number generator would produce a uniform distribution of each of the 10 digits at all decimal places. Here we are plotting a bar chart of the third digit for all four random number generators, `rand`, `randm`, `randu`, `random_number`, comparing their performance.
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="digit_test_comparison.png">
+ <source media="(prefers-color-scheme: light)" srcset="digit_test_comparison.png">
+ <img alt="YOUR-ALT-TEXT" src="digit_test_comparison.png">
+</picture>
 
 ### 4. Maximum Spacing Test
  implement the "maximum spacing" method in J. Heinrich's paper
