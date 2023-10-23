@@ -55,7 +55,7 @@ An ideal random number generator would produce a uniform distribution of each of
 
 ### 4. Chi Square Test
 Good uniform random number generators must produce deviates that are 1) uniformly distributed, and 2) independent, i.e. knowing the values of previously produced deviates provides no extra information about the values of the subsequent deviates. In Joel Heinrich's paper "Detecting a bad random number generator", the Chi Square test can be conducted to test for independence, by computing the p-value of the empirical distribution on the null hypothesis that the random number generator is uniformly distributed. The Chi Square statistics is calculated as,
-\[\chi^2 = \sum_{i=1}^{10^N} \frac{(B_i - M\cdot 10^{-N})^2}{M\cdot 10^{-N}} \]
+$$\chi^2 = \sum_{i=1}^{10^N} \frac{(B_i - M\cdot 10^{-N})^2}{M\cdot 10^{-N}} $$
 where $N=5$ in this case, $M = 10^7$, $B_i$ is the population of the i-th bin, and the degrees of freedom is $10^N - 1$. The analysis code is contained in `RNG_analysis.ipynb`.
 
 <picture>
