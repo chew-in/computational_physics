@@ -46,15 +46,22 @@ Random number generators are the basic tools of stochastic modeling. Bad random 
 
 ### 3. Digit Frequency Test
 An ideal random number generator would produce a uniform distribution of each of the 10 digits at all decimal places. Here we are plotting a bar chart of the third digit for all four random number generators, `rand`, `randm`, `randu`, `random_number`, comparing their performance.
+
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="./plots/digit_test_comparison.png">
  <source media="(prefers-color-scheme: light)" srcset="./plots/digit_test_comparison.png">
  <img alt="YOUR-ALT-TEXT" src="./plots/digit_test_comparison.png">
 </picture>
 
-### 4. Maximum Spacing Test
- implement the "maximum spacing" method in J. Heinrich's paper
-Good uniform random number generators must produce deviates that are:
-• Uniformly distributed.
-• Independent.
-“Independent” means that knowing the values of previously produced devi- ates provides no extra information about the values of the subsequent devi- ates. As non uniformity (in one dimension) is easily detected, “bad” uniform random number generators, in practice, actually fail a test of independence.1
+### 4. Chi Square Test
+Good uniform random number generators must produce deviates that are 1) uniformly distributed, and 2) independent, i.e. knowing the values of previously produced deviates provides no extra information about the values of the subsequent deviates. In Joel Heinrich's paper "Detecting a bad random number generator", the Chi Square test can be conducted to test for independence, by computing the p-value of the empirical distribution on the null hypothesis that the random number generator is uniformly distributed. The Chi Square statistics is calculated as,
+\[\chi^2 = \sum_{i=1}^{10^N} \frac{(B_i - M\cdot 10^{-N})^2}{M\cdot 10^{-N}} \]
+where $N=5$ in this case, $M = 10^7$, $B_i$ is the population of the i-th bin, and the degrees of freedom is $10^N - 1$. The analysis code is contained in `RNG_analysis.ipynb`.
+
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="./plots/chi_square.png">
+ <source media="(prefers-color-scheme: light)" srcset="./plots/chi_square.png">
+ <img alt="YOUR-ALT-TEXT" src="./plots/chi_square.png">
+</picture>
+
+
