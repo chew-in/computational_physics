@@ -30,36 +30,31 @@ We sort the random numbers in histogram bins and check for statistically signifi
 This collection of histogram plots display hit counts for the four RNGs with the same seed value of $X_0 = 777$, with anomalous data flagged in red and enlarged for illustration purposes. By central limit theorem, we expect that the distribution of hit counts in each histogram bin approximates a normal distribution, as our sample size of $100000$ bins is sufficient for the CLT to hold. Theoretically, for a normal distribution curve, we expect $6.334E-5$ fraction of data outside $\pm 4\sigma$, or $6.3$ data points for our sample size. So all the RNG algorithms produce more anomalous bins than expected. The analysis code is contained in `RNG_analysis.ipynb`.
 
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="RNG_histogram_flagged_plots_Tableau.png">
- <source media="(prefers-color-scheme: light)" srcset="RNG_histogram_flagged_plots_Tableau.png">
- <img alt="YOUR-ALT-TEXT" src="RNG_histogram_flagged_plots_Tableau.png">
+ <source media="(prefers-color-scheme: dark)" srcset="./plots/RNG_histogram_flagged_plots_Tableau.png">
+ <source media="(prefers-color-scheme: light)" srcset="./plots/RNG_histogram_flagged_plots_Tableau.png">
+ <img alt="YOUR-ALT-TEXT" src="./plots/RNG_histogram_flagged_plots_Tableau.png">
 </picture>
 
 ### 2. Triplet Correlation Test
 Random number generators are the basic tools of stochastic modeling. Bad random number generators may ruin a simulation. Monte Carlo results are misleading when correlations hidden in the random numbers and in the simulated system interfere constructively. In [this paper](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=dd766094d94bf8af5402a38d0bedb42ad0927d71), the author investigated the LCG `randu` and found that even though the correlation between consecutive non-overlapping pairs of numbers $(x_{2n}, x_{2n+1})$ looks normal, the triples $(x_{3n}, x_{3n+1}, x_{3n+2})$ are extremely correlated and happen to lie on only fifteen planes, producing a catastrophic lattice. I will reproduce this result by setting a seed value of $X_0 = 314159$ will reproduce the integer lines of the triplets $9x-6y+z$. The analysis code is contained in `RNG_analysis.ipynb`.
 
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="triplet_test_comparison.png">
- <source media="(prefers-color-scheme: light)" srcset="triplet_test_comparison.png">
- <img alt="YOUR-ALT-TEXT" src="triplet_test_comparison.png">
+ <source media="(prefers-color-scheme: dark)" srcset="./plots/triplet_test_comparison.png">
+ <source media="(prefers-color-scheme: light)" srcset="./plots/triplet_test_comparison.png">
+ <img alt="YOUR-ALT-TEXT" src="./plots/triplet_test_comparison.png">
 </picture>
 
 ### 3. Digit Frequency Test
 An ideal random number generator would produce a uniform distribution of each of the 10 digits at all decimal places. Here we are plotting a bar chart of the third digit for all four random number generators, `rand`, `randm`, `randu`, `random_number`, comparing their performance.
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="digit_test_comparison.png">
- <source media="(prefers-color-scheme: light)" srcset="digit_test_comparison.png">
- <img alt="YOUR-ALT-TEXT" src="digit_test_comparison.png">
+ <source media="(prefers-color-scheme: dark)" srcset="./plots/digit_test_comparison.png">
+ <source media="(prefers-color-scheme: light)" srcset="./plots/digit_test_comparison.png">
+ <img alt="YOUR-ALT-TEXT" src="./plots/digit_test_comparison.png">
 </picture>
 
 ### 4. Maximum Spacing Test
  implement the "maximum spacing" method in J. Heinrich's paper
-
-Here are several ways of testing the quality of a random number generator. 
-
-Testing random # generators 2: p1192-parkmiller.pdf Download p1192-parkmiller.pdf 
-
-Testing random # generators 3: cdf6850_badrand-1.pdf Download cdf6850_badrand-1.pdf 
-
-
-Can make fancy plots for the distribution - chi-square distribution, triplet, 3D plots (random angle, and find the angle that display the bad structure) 
+Good uniform random number generators must produce deviates that are:
+• Uniformly distributed.
+• Independent.
+“Independent” means that knowing the values of previously produced devi- ates provides no extra information about the values of the subsequent devi- ates. As non uniformity (in one dimension) is easily detected, “bad” uniform random number generators, in practice, actually fail a test of independence.1
