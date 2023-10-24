@@ -9,7 +9,7 @@ The Ising model is a mathematical model of ferromagnetism in statistical mechani
 $$H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j$$
 where $\sigma$ is the configuration, $H$ is the Hamiltonian, sites $i, j$ are nearest neighbors with interaction $J_{ij}$, $\mu$ is the magnetic moment, $h_j$ is an external magnetic field. The first part of the Hamiltonian describes spin-spin interaction, and the second part of the Hamiltonian describes spin-field interaction.
 
-   If $J_{ij}>0$, $\uparrow \uparrow$ and energetically  the interaction is ferromagnetic; if $J_{ij}<0$, the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. 
+   If $J_{ij}>0$, $\uparrow \uparrow$ and $\downarrow \downarrow$ are energetically favored, and the interaction is ferromagnetic; if $J_{ij}<0$, $\uparrow \downarrow$ and $\downarrow \uparrow$ are energetically favored, and the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. 
 
    If $h_j>0$ the spin site $j$ desires to line up in the positive direction; if $h_j<0$ the spin site $j$ desires to line up in the negative direction; if $h_j=0$, there is no external influence on the spin site.
 
@@ -18,12 +18,14 @@ $${Z_\beta} = \sum_\sigma e^{-\beta H(\sigma)}$$
 
 1. The _**configuration probability**_ is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
 $$P_\beta(\sigma) = \frac{e^{-\beta H(\sigma)}}{Z_\beta}$$
-where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For a function $f$ of spins ("observable"), one can calculate the expectation (mean) value of $f$ denoted by $&lt; y &gt;_\beta$ using the the configuration probability, as follows,
+where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For any observable $X$ as a function of spins, the statistical average (expectation) of $X$ is given by,
 ```math
-&lt; y &gt;_\beta = \sum_\sigma f(\sigma) P_\beta(\sigma)
+&lt; X &gt;_\beta = \sum_\sigma X(\sigma) P_\beta(\sigma)
 ```
 
-1. The Ising model exhibits _**phase transitions**_, where the system undergoes a spontaneous change in its order. The most famous phase transition in the Ising model is the ferromagnetic phase transition, where spins align and the material becomes magnetized. Due to the complexity of solving the Ising model analytically, numerical techniques like _**Monte Carlo simulations**_ are often used to study the behavior of the model and explore its phase transitions.
+1. The Ising model exhibits _**phase transitions**_, where the system undergoes a spontaneous change in its order. The most famous phase transition predicted in the Ising model is the ferromagnetic phase transition, where spins align and the material becomes magnetized. 
+
+1. Due to the complexity of solving the Ising model analytically, numerical techniques like _**Monte Carlo simulations**_ are often used to study the behavior of the model and explore its phase transitions. The Metropolis algorithm 
 
 
 
