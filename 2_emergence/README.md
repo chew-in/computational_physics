@@ -18,7 +18,7 @@ $${Z_\beta} = \sum_\sigma e^{-\beta H(\sigma)}$$
 
 1. The _**configuration probability**_ is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
 $$P_\beta(\sigma) = \frac{e^{-\beta H(\sigma)}}{Z_\beta}$$
-where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For any observable $X$ as a function of spins, the statistical average (expectation) of $X$ is given by,
+where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For any observable $X$ as a function of spins, the statistical average (expectation) of $X$ is given by, $\langle x \rangle$
 ```math
 &lt; X &gt;_\beta = \sum_\sigma X(\sigma) P_\beta(\sigma)
 ```
