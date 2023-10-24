@@ -16,7 +16,7 @@ where
 ```math
 H = -J Σ<sub>ij</sub> s<sub>i</sub> s<sub>j</sub> - μB Σ s<sub>i</sub> h
 ```
-Testing inline, ```\frac{1}{2} + \frac{3}{4} = \frac{5}{4}``` and `\frac{1}{2} + \frac{3}{4} = \frac{5}{4}`
+Testing inline, ```math \frac{1}{2} + \frac{3}{4} = \frac{5}{4}``` and `\frac{1}{2} + \frac{3}{4} = \frac{5}{4}`
 1. The Ising model can be used to calculate the **partition function**, which, in turn, allows for the computation of various thermodynamic properties such as magnetization, specific heat, and susceptibility. For example, 
 1. The Ising model exhibits phase transitions, where the system undergoes a spontaneous change in its order.
 
