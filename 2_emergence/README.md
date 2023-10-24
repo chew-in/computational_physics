@@ -7,9 +7,9 @@ The Ising model is a mathematical model of ferromagnetism in statistical mechani
 
 1. The energy of the system is determined by a _**Hamiltonian**_, which specifies how spins interact with their neighbors and with an external magnetic field. The Hamiltonian for the Ising model is, 
 $$H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j$$
-where $\sigma$ is the configuration, $H$ is the Hamiltonian, sites $i, j$ are nearest neighbors with interaction $J_{ij}$, $\mu$ is the magnetic moment, $h_j$ is an external magnetic field. 
+where $\sigma$ is the configuration, $H$ is the Hamiltonian, sites $i, j$ are nearest neighbors with interaction $J_{ij}$, $\mu$ is the magnetic moment, $h_j$ is an external magnetic field. The first part of the Hamiltonian describes spin-spin interaction, and the second part of the Hamiltonian describes spin-field interaction.
 
-   If $J_{ij}>0$, the interaction is ferromagnetic; if $J_{ij}<0$, the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. 
+   If $J_{ij}>0$, $\uparrow \uparrow$ and energetically  the interaction is ferromagnetic; if $J_{ij}<0$, the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. 
 
    If $h_j>0$ the spin site $j$ desires to line up in the positive direction; if $h_j<0$ the spin site $j$ desires to line up in the negative direction; if $h_j=0$, there is no external influence on the spin site.
 
@@ -23,12 +23,7 @@ where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For a f
 &lt; y &gt;_\beta = \sum_\sigma f(\sigma) P_\beta(\sigma)
 ```
 
-
-1. The Ising model exhibits phase transitions, where the system undergoes a spontaneous change in its order.
-
-Phase Transitions: The Ising model exhibits phase transitions, where the system undergoes a spontaneous change in its order. The most famous phase transition in the Ising model is the ferromagnetic phase transition, where spins align and the material becomes magnetized.
-
-Monte Carlo Simulations: Due to the complexity of solving the Ising model analytically, numerical techniques like Monte Carlo simulations are often used to study the behavior of the model and explore its phase transitions.
+1. The Ising model exhibits _**phase transitions**_, where the system undergoes a spontaneous change in its order. The most famous phase transition in the Ising model is the ferromagnetic phase transition, where spins align and the material becomes magnetized. Due to the complexity of solving the Ising model analytically, numerical techniques like _**Monte Carlo simulations**_ are often used to study the behavior of the model and explore its phase transitions.
 
 
 
