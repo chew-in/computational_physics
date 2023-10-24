@@ -9,9 +9,9 @@ The Ising model is a mathematical model of ferromagnetism in statistical mechani
 $$H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j$$
 where $\sigma$ is the configuration, $H$ is the Hamiltonian, sites $i, j$ are nearest neighbors with interaction $J_{ij}$, $\mu$ is the magnetic moment, $h_j$ is an external magnetic field. 
 
-  If $J_{ij}>0$, the interaction is ferromagnetic; if $J_{ij}<0$, the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. 
+   If $J_{ij}>0$, the interaction is ferromagnetic; if $J_{ij}<0$, the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. 
 
-  If $h_j>0$ the spin site $j$ desires to line up in the positive direction; if $h_j<0$ the spin site $j$ desires to line up in the negative direction; if $h_j=0$, there is no external influence on the spin site.
+   If $h_j>0$ the spin site $j$ desires to line up in the positive direction; if $h_j<0$ the spin site $j$ desires to line up in the negative direction; if $h_j=0$, there is no external influence on the spin site.
 
 1. The configuration probability is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
 
