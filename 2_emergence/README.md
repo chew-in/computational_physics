@@ -9,9 +9,9 @@ The Ising model is a mathematical model of ferromagnetism in statistical mechani
 H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j
 ```
 where 
-$$
+```math
 \frac{1}{2} + \frac{3}{4} = \frac{5}{4}
-$$
+```
 
 ```math
 H = -J Σ<sub>ij</sub> s<sub>i</sub> s<sub>j</sub> - μB Σ s<sub>i</sub> h
