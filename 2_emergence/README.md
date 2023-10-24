@@ -6,19 +6,13 @@ The Ising model is a mathematical model of ferromagnetism in statistical mechani
 1. The model is defined on a regular _**lattice**_, such as a one-dimensional chain, a two-dimensional square lattice, or a three-dimensional cubic lattice.
 1. Each lattice site has a _**spin**_ that can be in one of two states: spin-up (+1) or spin-down (-1). Symbolically, each site $k$ has a spin $\sigma_k$ such that $\sigma_k \in (-1, 1)$. 
 1. The energy of the system is determined by a _**Hamiltonian**_, which specifies how spins interact with their neighbors and with an external magnetic field. The Hamiltonian for the Ising model is, 
-```math
-H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j
-```
-where 
-```math
-\frac{1}{2} + \frac{3}{4} = \frac{5}{4}
-```
+$$ H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j $$
+where $\sigma$ is the configuration, $H$ is the Hamiltonian, sites $i, j$ are nearest neighbors with interaction $J_{ij}$, $\mu$ is the magnetic moment, $h_j$ is an external magnetic field. If $J_{ij}>0$, the interaction is ferromagnetic; if $J_{ij}<0$, the interaction is antiferromagnetic; if $J_{ij}=0$, the spins are noninteracting. If $h_j>0$ the spin site $j$ desires to line up in the positive direction; if $h_j<0$ the spin site $j$ desires to line up in the negative direction; if $h_j=0$, there is no external influence on the spin site.
+1. The configuration probability is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
 
-```math
-H = -J Σ<sub>ij</sub> s<sub>i</sub> s<sub>j</sub> - μB Σ s<sub>i</sub> h
-```
-Testing inline, ```math \frac{1}{2} + \frac{3}{4} = \frac{5}{4}``` and `\frac{1}{2} + \frac{3}{4} = \frac{5}{4}` and \(\frac{1}{2} + \frac{3}{4} = \frac{5}{4}\) and \[\frac{1}{2} + \frac{3}{4} = \frac{5}{4}\] and $$\frac{1}{2} + \frac{3}{4} = \frac{5}{4}$$
-1. The Ising model can be used to calculate the **partition function**, which, in turn, allows for the computation of various thermodynamic properties such as magnetization, specific heat, and susceptibility. For example, 
+
+
+1. The Ising model can be used to calculate the _**partition function**_, which, in turn, allows for the computation of various thermodynamic properties such as magnetization, specific heat, and susceptibility. For example, 
 1. The Ising model exhibits phase transitions, where the system undergoes a spontaneous change in its order.
 
 
