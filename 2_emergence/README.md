@@ -18,8 +18,8 @@ $${Z_\beta} = \sum_\sigma e^{-\beta H(\sigma)}$$
 
 1. The _**configuration probability**_ is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
 $$P_\beta(\sigma) = \frac{e^{-\beta H(\sigma)}}{Z_\beta}$$
-where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For a function $f$ of spins ("observable"), one can calculate the expectation (mean) value of $f$ denoted by $&lt;Hello&gt;$ using the the configuration probability, as follows,
-$$\<f\>_\beta$$
+where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For a function $f$ of spins ("observable"), one can calculate the expectation (mean) value of $f$ denoted by \( x &lt; y \) using the the configuration probability, as follows,
+
 
 1. The Ising model exhibits phase transitions, where the system undergoes a spontaneous change in its order.
 
