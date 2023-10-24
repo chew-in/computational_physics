@@ -14,6 +14,7 @@ where
 
 This expression uses `\$` to display a dollar sign: $\sqrt{\$4}$
 
+This expression uses `\$` to display a dollar sign: $$\sqrt{\$4}$$
 Read up a bit on Ising models. Besides the usual (Wikipedia, etc.) a few good starting points are:
 http://inside.mines.edu/~dwu/classes/CH353/labs/Ising/Dry%20Lab%202/ising %20pages/intro.htm
 http://young.physics.ucsc.edu/ising/ising.html https://arxiv.org/abs/0803.0217
