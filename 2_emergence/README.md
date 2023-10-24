@@ -3,12 +3,15 @@
 ## Ising Model
 The Ising model is a mathematical model of ferromagnetism in statistical mechanics, with the following features - 
 1. The model is defined on a regular _**lattice**_, such as a one-dimensional chain, a two-dimensional square lattice, or a three-dimensional cubic lattice.
-1. Each lattice site has a **spin** that can be in one of two states: spin-up (+1) or spin-down (-1). Symbolically, each site $k$ has a spin $\sigma_k$ such that $\sigma_k \in (-1, 1)$. 
-1. The energy of the system is determined by a **Hamiltonian**, which specifies how spins interact with their neighbors and with an external magnetic field. The Hamiltonian for the Ising model is, 
+1. Each lattice site has a _**spin**_ that can be in one of two states: spin-up (+1) or spin-down (-1). Symbolically, each site $k$ has a spin $\sigma_k$ such that $\sigma_k \in (-1, 1)$. 
+1. The energy of the system is determined by a _**Hamiltonian**_, which specifies how spins interact with their neighbors and with an external magnetic field. The Hamiltonian for the Ising model is, 
 ```math
 H(\sigma) = -\sum J_{ij} \sigma_i \sigma_j - \mu \sum_j h_j \sigma_j
 ```
 where 
+$$
+\frac{1}{2} + \frac{3}{4} = \frac{5}{4}
+$$
 
 ```math
 H = -J Σ<sub>ij</sub> s<sub>i</sub> s<sub>j</sub> - μB Σ s<sub>i</sub> h
