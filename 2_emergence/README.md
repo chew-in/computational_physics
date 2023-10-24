@@ -1,10 +1,5 @@
-<script src="mathjax-config.js" defer></script>
-<script type="text/javascript" id="MathJax-script" defer
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
-
 # Emergence
-This sentence uses delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$ and $ \frac{1}{2} + \frac{3}{4} = \frac{5}{4} $
+This sentence uses delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$ and $\frac{1}{2} + \frac{3}{4} = \frac{5}{4}$
 
 ## Ising Model
 The Ising model is a mathematical model of ferromagnetism in statistical mechanics, with the following features - 
