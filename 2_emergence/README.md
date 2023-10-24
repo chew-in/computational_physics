@@ -19,7 +19,7 @@ $${Z_\beta} = \sum_\sigma e^{-\beta H(\sigma)}$$
 1. The _**configuration probability**_ is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
 $$P_\beta(\sigma) = \frac{e^{-\beta H(\sigma)}}{Z_\beta}$$
 where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For any observable $X$ as a function of spins, the statistical average (expectation) of $X$ is given by, 
-$$\langle X \rangle\beta = \sum_\sigma X(\sigma) P_\beta(\sigma)$$
+$$\langle X \rangle_\beta = \sum_\sigma X(\sigma) P_\beta(\sigma)$$
 
 1. The Ising model exhibits _**phase transitions**_, where the system undergoes a spontaneous change in its order. The most famous phase transition predicted in the Ising model is the ferromagnetic phase transition, where spins align and the material becomes magnetized. 
 
