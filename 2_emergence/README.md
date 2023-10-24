@@ -13,9 +13,13 @@ where $\sigma$ is the configuration, $H$ is the Hamiltonian, sites $i, j$ are ne
 
    If $h_j>0$ the spin site $j$ desires to line up in the positive direction; if $h_j<0$ the spin site $j$ desires to line up in the negative direction; if $h_j=0$, there is no external influence on the spin site.
 
-1. The configuration probability is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
+1. The Ising model can be used to calculate the _**partition function**_, which, in turn, allows for the computation of various thermodynamic properties such as magnetization, specific heat, and susceptibility. The partition function is,
+$${Z_\beta} = \sum_\sigma e^{-\beta H(\sigma)}$$
 
-1. The Ising model can be used to calculate the _**partition function**_, which, in turn, allows for the computation of various thermodynamic properties such as magnetization, specific heat, and susceptibility. For example, 
+1. The _**configuration probability**_ is given by the Boltzmann distribution with inverse temperature $\beta \geq 0$:
+$$P_\beta(\sigma) = \frac{e^{-\beta H(\sigma)}}{Z_\beta}$$
+where $\beta=(k_\beta T)^{-1}$, and $Z_\beta$ is the partition function. For a function $f$ of spins ("observable"), one can calculate the expectation (mean) value of $f$ denoted by $<f>_\beta$ using the the configuration probability, as follows,
+$$<f>_\beta$$
 
 1. The Ising model exhibits phase transitions, where the system undergoes a spontaneous change in its order.
 
