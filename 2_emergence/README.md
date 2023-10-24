@@ -4,6 +4,7 @@
 </script>
 
 # Emergence
+This sentence uses delimiters to show math inline:  $\sqrt{3x-1}+(1+x)^2$
 
 ## Ising Model
 The Ising model is a mathematical model of ferromagnetism in statistical mechanics, with the following features - 
