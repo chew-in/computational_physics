@@ -23,8 +23,13 @@ $$\langle X \rangle_\beta = \sum_\sigma X(\sigma) P_\beta(\sigma) = \frac{1}{Z_\
 
 1. The Ising model exhibits _**phase transitions**_, where the system undergoes a spontaneous change in its order. The most famous phase transition predicted in the Ising model is the ferromagnetic phase transition, where spins align and the material becomes magnetized. 
 
-1. Due to the complexity of solving the Ising model analytically, numerical techniques like _**Monte Carlo simulations**_ are often used to study the behavior of the model and explore its phase transitions. The Metropolis algorithm 
-
+1. Due to the complexity of solving the Ising model analytically, numerical techniques like _**Monte Carlo simulations**_ are often used to study the behavior of the model and explore its phase transitions. An example is the Metropolis algorithm as follows - 
+   1. Establish an initial microstate.
+   1. Choose a spin at random and make a trial flip.
+   1. Compute the change in the energy of the system due to the trial flip, $\Delta E := E_{trial} - E_{old}$. 
+   1. If $\Delta E \leq 0$, accept the new microstate and go to step 8. 
+   1. If $\Delta E < 0$, compute the quantity $w = e^{- \beta \Delta E}$.
+   
 
 
 Read up a bit on Ising models. Besides the usual (Wikipedia, etc.) a few good starting points are:
