@@ -27,8 +27,13 @@ $$\langle X \rangle_\beta = \sum_\sigma X(\sigma) P_\beta(\sigma) = \frac{1}{Z_\
    1. Establish an initial microstate.
    1. Choose a spin at random and make a trial flip.
    1. Compute the change in the energy of the system due to the trial flip, $\Delta E := E_{trial} - E_{old}$. 
-   1. If $\Delta E \leq 0$, accept the new microstate and go to step 8. 
+   1. If $\Delta E \leq 0$, accept the new microstate and go to step VIII. 
    1. If $\Delta E < 0$, compute the quantity $w = e^{- \beta \Delta E}$.
+   1. Generate a uniform random number $r$ in the unit interval $[0, 1]$.
+   1. If $r \leq w$, accept the new microstate; otherwise retain the previous microstate.
+   1. Determine the value of the desired physical quantities.
+   1. Repeat steps II through VIII to obtain a sufficient number of microstates.
+   10. Periodically compute averages over the microstates. 
    
 
 
