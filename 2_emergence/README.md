@@ -67,10 +67,8 @@ Stephen Wolfram studied cellular automata in the 1980’s, concluded that all th
 * Existing methods in theoretical physics tend to revolve around ideas of continuous numbers and calculus—or sometimes probability. Most of the systems in the book involve just simple discrete elements with definite rules. 
 * Something irreducible can be achieved by the passage of time, which leads to an explanation of how we as humans can still show free will. 
 
-## Swarm Behavior
-
 ## Conway's Game of Life
-The Game of Life, or Life, is the best-known example of a cellular automaton, in which patterns form and evolve on a 2D grid according to a few simple rules. Devised by British mathematician [John Horton Conway](https://www.theguardian.com/science/2015/jul/23/john-horton-conway-the-most-charismatic-mathematician-in-the-world), the Game of Life demonstrates how simplicity generates complexity - 1) it can do arbitrary computations, 2) it can build copies of itself. The Game of Life has been extensively studied for its ability to produce various [interesting patterns](https://www.youtube.com/watch?v=C2vgICfQawE), including gliders, oscillators, spaceships, and still lifes.
+The Game of Life, or Life, is the best-known example of a cellular automaton, in which patterns form and evolve on a 2D grid according to a few simple rules. Devised by British mathematician [John Horton Conway](https://www.theguardian.com/science/2015/jul/23/john-horton-conway-the-most-charismatic-mathematician-in-the-world), the Game of Life demonstrates how simplicity generates complexity - despite being a zero-player game whose evolution is determined only by its initial state, 1) it can do arbitrary computations, and 2) it can build copies of itself. The Game of Life has been extensively studied for its ability to produce various [interesting patterns](https://www.youtube.com/watch?v=C2vgICfQawE), including gliders, oscillators, spaceships, and still lifes.
 
 The rules of Life include - 
 1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
@@ -79,10 +77,11 @@ The rules of Life include -
 1. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
 I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, we will simulate - 
-1. A Bee-Hive. It is an example of a Still Life. Coordinates (33,33), (33,34), (34,32), (34,35), (35,33), (35,34).
-1. A Toad. It is an example of an Oscillator with period 2. Coordinates (34,33), (34,34), (34,35), (35,32), (35,33), (35,34). 
-1. A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. Coordinates (24,24), (25,23), (25,24), (25,25).
-1. The Glider. It is an example of a Spaceship. Coordinates (33,33), (33,34), (33,35), (34,33), (35,34)
+1. ![A Bee-Hive](test_bitmap.gif). It is an example of a Still Life. 
+1. A Toad. It is an example of an Oscillator with period 2.
+1. A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. 
+1. The Glider. It is an example of a Spaceship. 
+
 
 ## Analysis on Life
 Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? 
