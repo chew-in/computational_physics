@@ -77,16 +77,19 @@ The rules of Life include -
 1. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
 I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, we will simulate - 
-1. ![A Bee-Hive](test_bitmap.gif). It is an example of a Still Life. 
+1. A Bee-Hive. It is an example of a Still Life. 
 1. A Toad. It is an example of an Oscillator with period 2.
 1. A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. 
 1. The Glider. It is an example of a Spaceship. 
 
+![A Bee-Hive](test_bitmap.gif)
 
 ## Analysis on Life
 Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? 
 1. long-term stability as a function of initial filling factor
-1. minimum initial colony size for a certain longevity, longevity vs. size of Petri dish for a fixed filling factor, PDF of game duration until stagnancy, etc. Anything you deem of sufficient interest to study.)
+1. minimum initial colony size for a certain longevity, 
+1. longevity vs. size of Petri dish for a fixed filling factor, 
+1. PDF of game duration until stagnancy, 
 
 
 Then we will tweak with the rules of Life as follows - 
