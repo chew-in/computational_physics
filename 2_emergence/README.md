@@ -78,12 +78,19 @@ The rules of Life include -
 
 I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, we will simulate - 
 1. A Bee-Hive. It is an example of a Still Life. 
+
 ![A Bee-Hive](./animations/bee_hive.gif)
+
 1. A Toad. It is an example of an Oscillator with period 2.
+
 ![A Toad](./animations/toad.gif)
+
 1. A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. 
+
 ![A T-tetromino](./animations/t_tetromino.gif)
+
 1. The Glider. It is an example of a Spaceship. 
+
 ![A Glider](./animations/glider.gif)
 
 
