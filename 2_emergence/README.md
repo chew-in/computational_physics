@@ -52,12 +52,14 @@ Cellular automata (singular: cellular automaton) are mathematical and computatio
 
 1. _**Variations**_: There are several more complicated variations of cellular automaton. For example, 1) _mobile automata_ are similar to cellular automata except that they have just a single “active cell” that gets updated at each step. 2) [_Turing machines_](https://mathworld.wolfram.com/TuringMachine.html) are similar to mobile automata in that they consist of a line of cells, known as the “tape”, together with a single active cell, known as the “head”. But, the head in a Turing machine can have several possible states. 3) _Substitution systems_ are set up so that the number of elements can change, i.e. for a sequence of elements, at each step each one of the elements is replaced by a new block of elements. Just to name a few variations. 
 
-
-
-## Philosophy 
+## Philosophy behind Cellular Automata
 Is the universe a computer? Do we live in a simulation? Does free will exist? 
 
-Scientists have long debated on whether the universe is analog or digital. Classical physics studies continuous variables over continuous time by methods such as calculus. Quantum mechanics establishes that many observables, such as the energy levels of an atom, are discretized. But is the universe _inherently_ digital? And what causes these quantized features to emerge? Nobel laureate Gerard ’t Hooft thinks that some sort of information processing on a submicroscopic level is responsible for the quantum features that describe detectable reality, and calls this version of quantum physics the _cellular automaton interpretation_.
+Scientists have long entertained such philosophical questions. In the sense that a computer is inherently digital - classical physics studies continuous variables over continuous time by methods such as calculus, but quantum mechanics establishes that many observables, such as the energy levels of an atom, are discretized. But is the universe _inherently_ digital? And what causes these quantized features to emerge?
+
+Nobel laureate Gerard ’t Hooft thinks that some sort of information processing on a submicroscopic level is responsible for the quantum features that describe detectable reality, and calls this version of quantum physics the _cellular automaton interpretation_.
+
+John Horton Conway (more on his work later) devised The Free Will Theorem, which deploys a motley combination of quantum mechanics axioms, philosophy, and geometry, and is stated as follows: If physicists have free will while performing experiments, then elementary particles possess free will as well, and this probably explains why and how humans have free will in the first place.
 
 Stephen Wolfram studied cellular automata in the 1980’s, concluded that all the complexities of the natural world could arise from cellular automata–like processes, and holds the [controversial opinion](https://www.scientificamerican.com/article/physicists-criticize-stephen-wolframs-theory-of-everything/) that “from an extremely simple model, we’re able to reproduce special relativity, general relativity and the core results of quantum mechanics”, and even evolution. Key ideas/ findings/ approaches in his book “A New Kind of Science” include - 
 * Complex behavior can arise from very simple rules. 
@@ -68,8 +70,32 @@ Stephen Wolfram studied cellular automata in the 1980’s, concluded that all th
 ## Swarm Behavior
 
 ## Conway's Game of Life
-Conway's game of life is a famous example of a 2D cellular automaton, and has been extensively studied for its ability to produce various patterns, including gliders, oscillators, and still lifes.
+The Game of Life, or Life, is the best-known example of a cellular automaton, in which patterns form and evolve on a 2D grid according to a few simple rules. Devised by British mathematician [John Horton Conway](https://www.theguardian.com/science/2015/jul/23/john-horton-conway-the-most-charismatic-mathematician-in-the-world), the Game of Life demonstrates how simplicity generates complexity - 1) it can do arbitrary computations, 2) it can build copies of itself. The Game of Life has been extensively studied for its ability to produce various [interesting patterns](https://www.youtube.com/watch?v=C2vgICfQawE), including gliders, oscillators, spaceships, and still lifes.
 
-• Further develop the code “life.f” to include the biological rules described there. Make sure your code works, by setting off a “glider” (coordinates (33,33), (33,34), (33,35), (34,33), (35,34)), or any other beast from the menagerie described in one of the links posted. Remember, the one precaution to keep in mind is not accessing elements of the game matrix outside of bounds, when tallying the number of live next neighbors, as this will lead to a runtime error (segmentation fault). Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? (long-term stability as a function of initial filling factor, minimum initial colony size for a certain longevity, longevity vs. size of Petri dish for a fixed filling factor, PDF of game duration until stagnancy, etc. Anything you deem of sufficient interest to study.)
+The rules of Life include - 
+1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+1. Any live cell with two or three live neighbors lives on to the next generation.
+1. Any live cell with more than three live neighbors dies, as if by overpopulation.
+1. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, we will simulate - 
+1. A Bee-Hive. It is an example of a Still Life. Coordinates (33,33), (33,34), (34,32), (34,35), (35,33), (35,34).
+1. A Toad. It is an example of an Oscillator with period 2. Coordinates (34,33), (34,34), (34,35), (35,32), (35,33), (35,34). 
+1. A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. Coordinates (24,24), (25,23), (25,24), (25,25).
+1. The Glider. It is an example of a Spaceship. Coordinates (33,33), (33,34), (33,35), (34,33), (35,34)
+
+## Analysis on Life
+Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? 
+1. long-term stability as a function of initial filling factor
+1. minimum initial colony size for a certain longevity, longevity vs. size of Petri dish for a fixed filling factor, PDF of game duration until stagnancy, etc. Anything you deem of sufficient interest to study.)
+
+
+Then we will tweak with the rules of Life as follows - 
+1. longer range interactions (e.g., swarm behavior)
+1. collaborative or war games (tribes!)
+1. introduction of an element of randomness (i.e., deviation from a purely deterministic game)
+1. use of a toric board
+
+
 • Optional (you can ask for additional time). Let your hair down and tweak with the rules of life. Suggestions: longer range interactions (e.g., swarm behavior), collaborative or war games (tribes!), introduction of an element of randomness (i.e., deviation from a purely deterministic game), use of a toric board, so on, and so forth. The whole beauty is that a set of rules that “make sense" may actually result in the emergence of surprising collective/coherent behaviors.
 Optional, and only for uber-geeks: beat me at “peg solitaire” (see shallowblue.f code). Develop a more successful algorithm than mine.
