@@ -76,7 +76,7 @@ The rules of Life include -
 1. Any live cell with more than three live neighbors dies, as if by overpopulation.
 1. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
-I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, we will simulate - 
+I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, I will simulate - 
 1. A Bee-Hive. It is an example of a Still Life. 
 
 ![A Bee-Hive](./animations/bee_hive.gif)
@@ -93,21 +93,38 @@ I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the 
 
 ![A Glider](./animations/glider.gif)
 
-
 ## Analysis on Life
 Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? 
-1. long-term stability as a function of initial filling factor
-1. minimum initial colony size for a certain longevity, 
-1. longevity vs. size of Petri dish for a fixed filling factor, 
-1. PDF of game duration until stagnancy, 
+1. _**Long-term stability vs. initial filling factor**_. The 40 $\times$ 40 board is randomly initiated with a filling factor from 1\% to 99\% (with different seeds). Here are examples the initial state of a low filling factor and a high filling factor:
 
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_low.png">
+ <source media="(prefers-color-scheme: light)" srcset="./animations/filling_low.png">
+ <img alt="Low Filling" src="./animations/filling_low.png">
+</picture>
+
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_high.png">
+ <source media="(prefers-color-scheme: light)" srcset="./animations/filling_high.png">
+ <img alt="High Filling" src="./animations/filling_high.png">
+</picture>
+
+For each filling factor, I randomize 10 different initial setups, and record the number of generations the program run before reaching stagnation, capping it at a maximum of 4000 iterations. The number of generations are later averaged to reduce the effects of sampling noise. A stagnation detection function is implemented to record the earliest generation when stagnation occurs. The caveat of the stagnation detection comes from the existence of oscillators - to prevent them from being recorded as living forever when in fact the patterns are repeating themselves, we need to compare the current grid to the entire history of previous frames to make sure no repetition exists, and not just the very last frame. Here is what we found - for a pretty wide range of filling factors, from 0.1 to 0.8, the game can live on for a while, reaching a maximum at around 0.2.
+
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="./plots/generation_vs_filling.png">
+ <source media="(prefers-color-scheme: light)" srcset="./plots/generation_vs_filling.png">
+ <img alt="High Filling" src="./plots/generation_vs_filling.png">
+</picture>
+
+1. longevity vs. size of Petri dish for a fixed filling factor
+
+
+## Further Development on Life
 
 Then we will tweak with the rules of Life as follows - 
-1. longer range interactions (e.g., swarm behavior)
+1. longer range interactions (e.g., swarm behavior) - neighbor of 2 distance awy 
 1. collaborative or war games (tribes!)
 1. introduction of an element of randomness (i.e., deviation from a purely deterministic game)
 1. use of a toric board
 
-
-• Optional (you can ask for additional time). Let your hair down and tweak with the rules of life. Suggestions: longer range interactions (e.g., swarm behavior), collaborative or war games (tribes!), introduction of an element of randomness (i.e., deviation from a purely deterministic game), use of a toric board, so on, and so forth. The whole beauty is that a set of rules that “make sense" may actually result in the emergence of surprising collective/coherent behaviors.
-Optional, and only for uber-geeks: beat me at “peg solitaire” (see shallowblue.f code). Develop a more successful algorithm than mine.
