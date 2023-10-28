@@ -97,11 +97,11 @@ I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the 
 Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? 
 1. _**Long-term stability vs. initial filling factor**_. The 40 $\times$ 40 board is randomly initiated with a filling factor from 1\% to 99\% (with different seeds). Here are examples the initial state of a low filling factor and a high filling factor:
 
-   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_low.png">
-    <source media="(prefers-color-scheme: light)" srcset="./animations/filling_low.png">
-    <img alt="Low Filling" src="./animations/filling_low.png">
-   </picture>
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_low.png">
+ <source media="(prefers-color-scheme: light)" srcset="./animations/filling_low.png">
+ <img alt="Low Filling" src="./animations/filling_low.png">
+</picture>
 
    <picture>
     <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_high.png">
