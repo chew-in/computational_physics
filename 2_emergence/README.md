@@ -77,34 +77,25 @@ The rules of Life include -
 1. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
 I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the code works, I will simulate - 
-1. A Bee-Hive. It is an example of a Still Life. 
+* A Bee-Hive. It is an example of a Still Life. 
 
 ![A Bee-Hive](./animations/bee_hive.gif)
 
-1. A Toad. It is an example of an Oscillator with period 2.
+* A Toad. It is an example of an Oscillator with period 2.
 
 ![A Toad](./animations/toad.gif)
 
-1. A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. 
+* A T-tetromino. It is an example of evolution, and takes 9 generations to evolve into an arrangement of four blinkers called a traffic light. 
 
 ![A T-tetromino](./animations/t_tetromino.gif)
 
-1. The Glider. It is an example of a Spaceship. 
+* The Glider. It is an example of a Spaceship. 
 
 ![A Glider](./animations/glider.gif)
 
 ## Analysis on Life
 Any conclusions from repeating the game (while changing random number generator seed) and keeping some tallies? 
-1. _**Long-term stability vs. initial filling factor**_. The 40 $\times$ 40 board is randomly initiated with a filling factor from 1\% to 99\% (with different seeds). Here are examples the initial state of a low filling factor and a high filling factor:
-
-   ![Low Filling](./animations/filling_low.png)
-   
-   ![High Filling](./animations/filling_high.png)
-   
-   For each filling factor, I randomize 10 different initial setups, and record the number of generations the program run before reaching stagnation, capping it at a maximum of 4000 iterations. The number of generations are later averaged to reduce the effects of sampling noise. A stagnation detection function is implemented to record the earliest generation when stagnation occurs. The caveat of the stagnation detection comes from the existence of oscillators - to prevent them from being recorded as living forever when in fact the patterns are repeating themselves, we need to compare the current grid to the entire history of previous frames to make sure no repetition exists, and not just the very last frame. Here is what we found - for a pretty wide range of filling factors, from 0.1 to 0.8, the game can live on for a while, reaching a maximum at around 0.2.
-   
-1. longevity vs. size of Petri dish for a fixed filling factor
-
+* _**Long-term stability vs. initial filling factor**_. The 40 $\times$ 40 board is randomly initiated with a filling factor from 1\% to 99\% (with different seeds). Here are examples the initial state of a low filling factor and a high filling factor:
 
 <picture>
  <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_low.png">
@@ -112,21 +103,15 @@ Any conclusions from repeating the game (while changing random number generator 
  <img alt="Low Filling" src="./animations/filling_low.png">
 </picture>
 
-   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_high.png">
-    <source media="(prefers-color-scheme: light)" srcset="./animations/filling_high.png">
-    <img alt="High Filling" src="./animations/filling_high.png">
-   </picture>
+<picture>
+ <source media="(prefers-color-scheme: dark)" srcset="./animations/filling_high.png">
+ <source media="(prefers-color-scheme: light)" srcset="./animations/filling_high.png">
+ <img alt="Low Filling" src="./animations/filling_high.png">
+</picture>
 
    For each filling factor, I randomize 10 different initial setups, and record the number of generations the program run before reaching stagnation, capping it at a maximum of 4000 iterations. The number of generations are later averaged to reduce the effects of sampling noise. A stagnation detection function is implemented to record the earliest generation when stagnation occurs. The caveat of the stagnation detection comes from the existence of oscillators - to prevent them from being recorded as living forever when in fact the patterns are repeating themselves, we need to compare the current grid to the entire history of previous frames to make sure no repetition exists, and not just the very last frame. Here is what we found - for a pretty wide range of filling factors, from 0.1 to 0.8, the game can live on for a while, reaching a maximum at around 0.2.
-
-   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./plots/generation_vs_filling.png">
-    <source media="(prefers-color-scheme: light)" srcset="./plots/generation_vs_filling.png">
-    <img alt="High Filling" src="./plots/generation_vs_filling.png">
-   </picture>
-
-1. longevity vs. size of Petri dish for a fixed filling factor
+   
+* longevity vs. size of Petri dish for a fixed filling factor
 
 
 ## Further Development on Life
