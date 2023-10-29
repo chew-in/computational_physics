@@ -98,18 +98,20 @@ I am simulating Life in both FOTRAN code `life3.f` and Python. To show that the 
 
 ![Low High Filling](./animations/filling_low_high.png)
 
-For each filling factor, I randomize 10 different initial setups, and record the number of generations the program run before reaching stagnation, capping it at a maximum of 4000 iterations. The number of generations are later averaged to reduce the effects of sampling noise. A stagnation detection function is implemented to record the earliest generation when stagnation occurs. The caveat of the stagnation detection comes from the existence of oscillators - to prevent them from being recorded as living forever when in fact the patterns are repeating themselves, we need to compare the current grid to the entire history of previous frames to make sure no repetition exists, and not just the very last frame. Here is what we found - for a pretty wide range of filling factors, from 0.1 to 0.8, the game can live on for a while, reaching a maximum at around 0.2.
+For each filling factor, I randomize 10 different initial setups, and record the number of generations the program run before reaching stagnation, capping it at a maximum of 4000 iterations. The number of generations are later averaged to reduce the effects of sampling noise. A stagnation detection function is implemented to record the earliest generation when stagnation occurs. The caveat of the stagnation detection comes from the existence of oscillators - to prevent them from being recorded as living forever when in fact the patterns are repeating themselves, we need to compare the current grid to the entire history of previous frames to make sure no repetition exists, and not just the very last frame. Here is what we found - for a pretty wide range of filling factors, from 0.1 to 0.8, the game can live on for a while, reaching a maximum at around 0.2. This agrees well with previous literature on Life.
 
 ![Longevity vs. Filling Factor Plot](./plots/generation_vs_filling.png)
 
-* longevity vs. size of Petri dish for a fixed filling factor
+* _**Long-term stability vs. size of Petri dish**_. For a filling factor of 0.2 (previously found maximum), I varied the size of the Petri dish from 3x3 to 100x100. Here are examples the initial state of a small Petri dish and a large Petri dish: 
 
+![Small Large Petri](./animations/petri_low_high.png)
+
+For each size, I let 10 randomly initialize setup evolve till stagnation and record their longevity, capping at a maximum of 4000 generations. The mean and standard deviation of longevity of each size are analyzed and plotted. Overall as the size of the Petri dish increases, the longevity of the game also increases, potentially due to combinatorially more ways for the mid-game configurations to be unique, so it is less likely to reach stagnancy.
+
+![Longevity vs. Petri Size Plot](./plots/petri_size_generation.png)
 
 ## Further Development on Life
-
-Then we will tweak with the rules of Life as follows - 
-1. longer range interactions (e.g., swarm behavior) - neighbor of 2 distance awy 
-1. collaborative or war games (tribes!)
-1. introduction of an element of randomness (i.e., deviation from a purely deterministic game)
-1. use of a toric board
-
+With easy tweaks of the code, one can further develop the game in the following manner - 
+1. Longer range interactions can be introduced by expanding the neighborhood of cells from Moore neighborhood of range 1 to longer ranges of Moore neighborhood, or of von Neumann neighborhood, so that neighbors further away can still play a role in the cell’s lifecycle.
+1. Competitive war games can be engineered by having $+1$ value as the living cell of one tribe, and $-1$ value as the living cell of the other tribe.
+1. An element of randomness can be introduced to the game to deviate from a purely deterministic game. This element can be of the form of a multiplier to the total number of neighbors, or an integer denoting the location of a newly spawned cell, etc. 
