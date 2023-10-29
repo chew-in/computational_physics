@@ -102,7 +102,7 @@ For each filling factor, I randomize 10 different initial setups, and record the
 
 ![Longevity vs. Filling Factor Plot](./plots/generation_vs_filling.png)
 
-* _**Long-term stability vs. size of Petri dish**_. For a filling factor of 0.2 (previously found maximum), I varied the size of the Petri dish from 3x3 to 100x100. Here are examples the initial state of a small Petri dish and a large Petri dish: 
+* _**Long-term stability vs. size of Petri dish**_. For a filling factor of 0.2 (previously found maximum), I varied the size of the Petri dish from 3 $\times$ 3 to 100 $\times$ 100. Here are examples the initial state of a small Petri dish and a large Petri dish: 
 
 ![Small Large Petri](./animations/petri_low_high.png)
 
