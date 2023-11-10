@@ -57,6 +57,15 @@ pick learning rate,
 - performance plot comparing tanh and sigmoid
 - 
 
+A perceptron is a _**feed-forward**_ network, to be distinguished from a recurrent network, meaning that no neuron in the output layer is an input to a node in the same layer or in the preceding layer.
+The architecture of a perceptron is shown in this diagram. [add the artificial neuron]
+In our example, denote the inputs by $x_1, x_2, x_3$, denote the output by $y$. 
+Denote the weight matrix by $W$, where the components $w_{ij}$ is the weight between the $i$-th neuron in the input layer and the $j$-th neuron in the output layer., so we will have $w_{11}, w_{21}, w_{31}$. 
+There is a transfer function that accumulates the weighted inputs, and feed the result to the artificial neuron as the net input. 
+net_j = 
+The activation function $\psi$ of the neuron transfers the net input $z$ to the activation $\psi (z)$. 
+In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\psi}{dz}(z)=\psi(z) (1 - \psi (z))$
+In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 x}}{1+e^{- 2x}}$, and the derivative which will be useful later is $\frac{d\psi}{dz}(z)=sech^2(x)=\psi(z) (1 - \psi (z))$
 
 ## Project 2 - two-layer perceptron for XOR relation
 
