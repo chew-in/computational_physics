@@ -23,11 +23,12 @@ A _**single-layer perceptron**_, also called McCulloch–Pitts neuron, or M-P ne
 _**Architecture**_. The perceptron needed consists of four input neurons , one output neuron , and the interconnections between them are denoted by the weights  where  denotes pointing from input  to output . Like a biological neuron, the weights may be either excitatory (positive) or inhibitory (negative).
 
 _**Activation function**_. In general, an activation function associated with a neuron transforms the net input to the desired output. There are many examples of activation functions, such as 
-1. The identity function $f(x)=x$, used in the input layer
-1. The step functions, including 1) the binary step function $f(x)=1$ if $x \geq \theta$ and $f(x)=0$ if $x \leq \theta$, where $\theta$ is the threshold value, or 2) the bipolar step function $f(x)=1$ if $x \geq \theta$ and $f(x)=-1$ if $x \leq \theta$, both used in the output layer
-1. The ramp function $f(x)=0$ if $x < 0$, $f(x)=x$ if $0 \leq x \leq 1$, and $f(x)=1$ if $x > 1$
-1. The binary sigmoid function $f(x)=\frac{1}{1+e^{-x}}$ whose output ranges from $0$ to $1$
-1. The hyperbolic tangent function, $f(x)=\frac{1-e^{-2 x}}{1+e^{- 2x}}$ whose output ranges from $-1$ to $+1$. This is mathematically equivalent to the bipolar sigmoid function
+1. The identity function $f(x)=x$, used in the input layer.
+1. The step functions, including 1) the binary step function $f(x)=1$ if $x \geq \theta$ and $f(x)=0$ if $x \leq \theta$, where $\theta$ is the threshold value, or 2) the bipolar step function $f(x)=1$ if $x \geq \theta$ and $f(x)=-1$ if $x \leq \theta$, both used in the output layer.
+1. The ramp function $f(x)=0$ if $x < 0$, $f(x)=x$ if $0 \leq x \leq 1$, and $f(x)=1$ if $x > 1$.
+1. The binary sigmoid function $f(x)=\frac{1}{1+e^{-x}}$ whose output ranges from $0$ to $1$.
+1. The hyperbolic tangent function, $f(x)=\frac{1-e^{-2 x}}{1+e^{- 2x}}$ whose output ranges from $-1$ to $+1$. This is mathematically equivalent to the bipolar sigmoid function.
+
 Note that the nonlinearity of the binary sigmoid function and the hyperbolic tangent function help bound the output. In our project, we will experiment with both of them.
 
 ## Project
