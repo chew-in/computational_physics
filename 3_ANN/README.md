@@ -32,17 +32,46 @@ _**Activation function**_. In general, an activation function associated with a 
 Note that the nonlinearity of the binary sigmoid function and the hyperbolic tangent function help bound the output. In our project, we will experiment with both of them.
 
 ## Project 1 - single-layer perceptron for equivalence relation
-We will implement an equivalence logic on the perceptron as described in the following truth table. 
-| Header 1 | Header 2 | Header 3 |
-| -------- | -------- | -------- |
-| Cell 1   | Cell 2   | Cell 3   |
-| Cell 4   | Cell 5   | Cell 6   |
+We will implement an equivalence logic on the perceptron as described in the following truth table, where the output is equal to the first input. 
+Training set: 
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 1      | 0      |
+| 0      | 1      | 1      | 0      |
+| 1      | 0      | 1      | 1      |
+| 1      | 1      | 1      | 1      |
+
+Test set:
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 0      | 0      |
+| 0      | 1      | 0      | 0      |
+| 1      | 0      | 0      | 1      |
+| 1      | 1      | 0      | 1      |
 
 - performance plot comparing tanh and sigmoid
 - 
 
 
 ## Project 2 - two-layer perceptron for XOR relation
+
+We will implement the XOR logic on the perceptron as described in the following truth table.
+Training set: 
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 1      | 0      |
+| 0      | 1      | 1      | 1      |
+| 1      | 0      | 1      | 1      |
+| 1      | 1      | 1      | 0      |
+
+Test set:
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 0      | 0      |
+| 0      | 1      | 0      | 1      |
+| 1      | 0      | 0      | 1      |
+| 1      | 1      | 0      | 0      |
+
 Train it in batch mode with the four examples mentioned in our slides, and test it with the other four remaining cases. 
 Does it work? If you observe any limitations, explain their cause. Does it work for the example provided in the slides involving the XOR function?
 
