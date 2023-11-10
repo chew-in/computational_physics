@@ -1,5 +1,5 @@
 # Artificial Neural Network (ANN)
-In this project, we will implement a single-layer perceptron (also known as McCulloch–Pitts neuron, or M-P neuron) in Python, which is the simplest kind of artificial neural network (ANN). 
+In this project, we will build perceptrons (also known as McCulloch–Pitts neuron, or M-P neuron) in Python, which is the simplest kind of artificial neural network, to implement equivalence and XOR logics.
 
 ## Introduction
 **_Artificial neural networks (ANN)_** are information processing systems modeled after the human brain. Like the human brain, an ANN possesses a large number of highly interconnected processing elements called neurons, much like biological cells. Each artificial neuron has an internal state of its own called the activation. Each artificial neuron is connected to other artificial neurons via interconnection links specified by the weights, much like dendrites. The transmission of activation signal goes from the output of a neuron to the input of other neuron(s), whose biologically analogs take place from the axon of the output neuron, to the soma of the input neuron. The human brain learns by modifying the biological connections between neurons after being stimulated by chemical signals, and similarly the ANN learns by making adjustments to the synaptic connections that exist between the neurons.
@@ -31,10 +31,22 @@ _**Activation function**_. In general, an activation function associated with a 
 
 Note that the nonlinearity of the binary sigmoid function and the hyperbolic tangent function help bound the output. In our project, we will experiment with both of them.
 
-## Project
+## Project 1 - single-layer perceptron for equivalence relation
+We will implement an equivalence logic on the perceptron as described in the following truth table. 
+| Header 1 | Header 2 | Header 3 |
+| -------- | -------- | -------- |
+| Cell 1   | Cell 2   | Cell 3   |
+| Cell 4   | Cell 5   | Cell 6   |
+
+- performance plot comparing tanh and sigmoid
+- 
+
+
+## Project 2 - two-layer perceptron for XOR relation
 Train it in batch mode with the four examples mentioned in our slides, and test it with the other four remaining cases. 
 Does it work? If you observe any limitations, explain their cause. Does it work for the example provided in the slides involving the XOR function?
 
+###############Juan 
 ## Transfer Function
 Compare the performance of the tanh and sigmoid transfer functions in your code (do not forget to change their derivative when doing this, also in the validation process). Is one faster than the other? (use the command CALL CPU_TIME( ) to time your code at given intervals). Does one work better than the other for the test inputs? If so, why?
 
@@ -51,4 +63,3 @@ Do not forget to update the dimensions of your matrices when adding or subtracti
 
 OPTIONAL: attempt the two-layer perceptron able to describe the XOR relation
 (see http://iamtrask.github.io/2015/07/12/basic-python-network/ for guidance).
-For the uber-geek: build a two-layer NN able to deal with the character recognition dataset at https://archive.ics.uci.edu/ml/datasets/Letter+Recognition (take extra time to complete).
