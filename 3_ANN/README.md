@@ -18,7 +18,7 @@ ANN is specified by three entities: 1) synaptic interconnections, 2) learning ru
 In this project we will only focus on the simplest topology, a single-layer perceptron. 
 
 ## Perceptron
-A _**single-layer perceptron**_, also called McCulloch–Pitts neuron, or M-P neuron, is the simplest architecture of an artificial neural network. The term single-layer means that other than the input neurons and the output neuron, there is no hidden layer of neurons between them for computation. A single-layer perceptron is a _**feed-forward**_ network, meaning that no neuron in the output layer is an input to a node in the same layer or in the preceding layer. 
+A _**single-layer perceptron**_, also called McCulloch–Pitts neuron, or M-P neuron, is the simplest architecture of an artificial neural network. The term single-layer means that other than the input neurons and the output neuron, there is no hidden layer of neurons between them for computation.  
 
 _**Architecture**_. The perceptron needed consists of four input neurons , one output neuron , and the interconnections between them are denoted by the weights  where  denotes pointing from input  to output . Like a biological neuron, the weights may be either excitatory (positive) or inhibitory (negative).
 
@@ -32,7 +32,8 @@ _**Activation function**_. In general, an activation function associated with a 
 Note that the nonlinearity of the binary sigmoid function and the hyperbolic tangent function help bound the output. In our project, we will experiment with both of them.
 
 ## Project 1 - single-layer perceptron for equivalence relation
-We will implement an equivalence logic on the perceptron as described in the following truth table, where the output is equal to the first input. 
+We will implement an equivalence logic on the perceptron as described in the following truth table, where the output is equal to the first input. See xxx notebook for details.
+
 Training set: 
 | Input 1    | Input 2    | Input 3    | Output    |
 | ----------- | ----------- | ----------- | ----------- |
@@ -49,13 +50,18 @@ Test set:
 | 1      | 0      | 0      | 1      |
 | 1      | 1      | 0      | 1      |
 
+### Back-propagation Algorithm
+
+pick learning rate,
+
 - performance plot comparing tanh and sigmoid
 - 
 
 
 ## Project 2 - two-layer perceptron for XOR relation
 
-We will implement the XOR logic on the perceptron as described in the following truth table.
+We will implement the XOR logic on the perceptron as described in the following truth table. See xxx notebook for details.
+
 Training set: 
 | Input 1    | Input 2    | Input 3    | Output    |
 | ----------- | ----------- | ----------- | ----------- |
