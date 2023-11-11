@@ -61,7 +61,7 @@ Denote the weight matrix by $W$, where the components $w_{ij}$ is the weight bet
 
 ### Forward-propagation
 Forward-propagation is the process that calculates the output of a neuron. For our neuron $j$, the output $o_j$ is calculated as first taking a transfer function $\sum$ that transforms the weighted inputs to the net input $net_j$, then apply the activation function $\phi$ of the neuron which transfers the net input $z$ to the activation $\phi (z)$. Altogether, the output $o_j$ is
-$o_j = \phi(net_j) = \phi (\sum_i w_{ij} x_i)$
+$$o_j = \phi(net_j) = \phi (\sum_i w_{ij} x_i)$$
 We will experiment with two common activation functions. 
 In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$.
 In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative which will be useful later is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
