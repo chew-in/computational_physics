@@ -73,10 +73,12 @@ Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{
 
 Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
 $$E = \frac{1}{2} (t-y)^2$$
-The partial derivative is calculated by _ 
-* 
-* 
-* 
+
+* The partial derivative is calculated by _ 
+   $$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial \text{net}_j} \frac{\partial \text{net}_j}{\partial w_{ij}}$$
+
+* sdf
+* sdf
 
 
 ## Project 2 - two-layer perceptron for XOR relation
