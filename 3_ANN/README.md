@@ -65,7 +65,6 @@ $$o_j = \phi(net_j) = \phi (\sum_i w_{ij} x_i)$$
 We will experiment with two common activation functions. 
 
 1. In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$.
-
 1. In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative which will be useful later is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
 
 ### Back-propagation
