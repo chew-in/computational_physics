@@ -75,7 +75,7 @@ Using the square error as a loss, the discrepancy or error $E$ between the targe
 $$E = \frac{1}{2} (t-y)^2$$
 
 * The partial derivative is calculated by _ 
-   $$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial \text{net}_j} \frac{\partial \text{net}_j}{\partial w_{ij}}$$
+   $$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial net_j} \frac{\partial net_j}{\partial w_{ij}}$$
 
 * sdf
 * sdf
