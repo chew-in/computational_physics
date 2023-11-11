@@ -50,9 +50,25 @@ Test set:
 | 1      | 0      | 0      | 1      |
 | 1      | 1      | 0      | 1      |
 
-### Back-propagation Algorithm
+### Architecture
+A perceptron is a _**feed-forward**_ network, to be distinguished from a recurrent network, meaning that no neuron in the output layer is an input to a node in the same layer or in the preceding layer.
+The architecture of a perceptron is shown in this diagram. [add the artificial neuron]
+In our example, denote the inputs by $x_1, x_2, x_3$, denote the calculated output by $y$, and denote the target (correct) output by $t$. 
+Denote the weight matrix by $W$, where the components $w_{ij}$ is the weight between the $i$-th neuron in the input layer and the $j$-th neuron in the output layer, so we will have $w_{11}, w_{21}, w_{31}$. 
 
-pick learning rate,
+### Forward-propagation
+Forward-propagation is the process that calculates the output of a neuron. For our neuron $j$, the output $o_j$ is calculated as first taking a transfer function $\sum$ that transforms the weighted inputs to the net input net$_j$, then apply the activation function $\phi$ of the neuron which transfers the net input $z$ to the activation $\phi (z)$. Altogether, the output $o_j$ is
+$o_j = \phi(\text{net}_j) = \phi (\sum_i w_{ij} x_i)$
+We will experiment with two common activation functions. 
+In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$.
+In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative which will be useful later is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
+
+### Back-propagation
+Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. 
+Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically -
+Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
+$E = \frac{1}{2} (t-y)^2$
+The partial derivative is calculated by
 
 - performance plot comparing tanh and sigmoid
 - 
