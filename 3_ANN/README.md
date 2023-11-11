@@ -64,7 +64,7 @@ Forward-propagation is the process that calculates the output of a neuron. For o
 $$o_j = \phi(net_j) = \phi (\sum_i w_{ij} x_i)$$
 We will experiment with two common activation functions:
 1. In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$.
-1. In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
+1. In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\sech^2(z)=(\frac{2}{e^z+e^{-z}})^2$.
 
 ### Back-propagation
 Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. 
@@ -82,6 +82,9 @@ $$\frac{\partial E}{\partial o_j} = \frac{\partial E}{\partial y} = y-t$$
 
 * The second term depends on the activation function being used, 
 $$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \phi(net_j)(1-\phi(net_j))$$
+for binary sigmoid function, and 
+$$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \sech^2(net_j)$$
+for hyperbolic tangent function
 
 * The last term, 
 $$\frac{\partial net_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} (\sum_i w_{ij} x_i)= x_i$$
