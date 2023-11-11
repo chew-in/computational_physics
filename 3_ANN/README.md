@@ -54,7 +54,7 @@ Test set:
 A perceptron is a _**feed-forward**_ network, to be distinguished from a recurrent network, meaning that no neuron in the output layer is an input to a node in the same layer or in the preceding layer.
 The architecture of a perceptron is shown in this diagram.
 
-![Perceptron](./graphics/artificial_neuron.jpeg)
+![Perceptron](./graphics/artificial_neuron.png)
 
 In our example, denote the inputs by $x_1, x_2, x_3$, denote the calculated output by $y$, and denote the target (correct) output by $t$. 
 Denote the weight matrix by $W$, where the components $w_{ij}$ is the weight between the $i$-th neuron in the input layer and the $j$-th neuron in the output layer, so we will have $w_{11}, w_{21}, w_{31}$. 
