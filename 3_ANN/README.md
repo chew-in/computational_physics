@@ -76,20 +76,18 @@ $$E = \frac{1}{2} (t-y)^2$$
 
 * The partial derivative is calculated by _ 
 $$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial net_j} \frac{\partial net_j}{\partial w_{ij}}$$
-
    * The first term, 
 $$\frac{\partial E}{\partial o_j} = \frac{\partial E}{\partial y} = y-t$$
-
    * The second term depends on the activation function being used, 
 $$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \phi(net_j)(1-\phi(net_j))$$
 for binary sigmoid function, and 
 $$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \sech^2(net_j)$$
 for hyperbolic tangent function.
-
    * The last term, 
 $$\frac{\partial net_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} (\sum_i w_{ij} x_i)= x_i$$
 
-The weight is updated by adding a differential term $\Delta w_{ij}$ to the old weight, where the differential term is learning rate $\alpha$ ($\alpha > 0$) of our pick multiplied by the partial derivative, and multiplied by $-1$. The $-1$ factor is important because for a parabolic shaped error function $E(w_{ij})$, if $\frac{\partial E}{\partial w_{ij}} > 0$, which corresponds to the right side of the cure, then $\Delta w_{ij} < 0$ would push the point to the left, which lowers the error. Otherwise, if $ \frac{\partial E}{\partial w_{ij}} < 0$, which corresponds to the left side of the cure, then $\Delta w_{ij} < 0$ would push the point to the right, which still lowers the error,
+* The weight is updated by adding a differential term $\Delta w_{ij}$ to the old weight, where the differential term is learning rate $\alpha$ ($\alpha > 0$) of our pick multiplied by the partial derivative, and multiplied by $-1$. The $-1$ factor is important because for a parabolic shaped error function $E(w_{ij})$, 
+   * If $\frac{\partial E}{\partial w_{ij}} > 0$, which corresponds to the right side of the cure, then $\Delta w_{ij} < 0$ would push the point to the left, which lowers the error. Otherwise, if $ \frac{\partial E}{\partial w_{ij}} < 0$, which corresponds to the left side of the cure, then $\Delta w_{ij} < 0$ would push the point to the right, which still lowers the error,
 $$\Delta w_{ij} = -\alpha  \frac{\partial E}{\partial w_{ij}}$$
 
 
