@@ -20,7 +20,7 @@ In this project we will only focus on the simplest topology, a single-layer perc
 ## Perceptron
 A _**single-layer perceptron**_, also called McCulloch–Pitts neuron, or M-P neuron, is the simplest architecture of an artificial neural network. The term single-layer means that other than the input neurons and the output neuron, there is no hidden layer of neurons between them for computation.  
 
-_**Architecture**_. The perceptron needed consists of four input neurons , one output neuron , and the interconnections between them are denoted by the weights  where  denotes pointing from input  to output . Like a biological neuron, the weights may be either excitatory (positive) or inhibitory (negative).
+_**Architecture**_. The perceptron needed consists of four input neurons , one output neuron , and the interconnections between them are denoted by the weights  where  denotes pointing from input  to output. Like a biological neuron, the weights may be either excitatory (positive) or inhibitory (negative).
 
 _**Activation function**_. In general, an activation function associated with a neuron transforms the net input to the desired output. There are many examples of activation functions, such as 
 1. The identity function $f(x)=x$, used in the input layer.
@@ -52,7 +52,10 @@ Test set:
 
 ### Architecture
 A perceptron is a _**feed-forward**_ network, to be distinguished from a recurrent network, meaning that no neuron in the output layer is an input to a node in the same layer or in the preceding layer.
-The architecture of a perceptron is shown in this diagram. [add the artificial neuron]
+The architecture of a perceptron is shown in this diagram.
+
+![Perceptron](./graphics/artificial_neuron.png)
+
 In our example, denote the inputs by $x_1, x_2, x_3$, denote the calculated output by $y$, and denote the target (correct) output by $t$. 
 Denote the weight matrix by $W$, where the components $w_{ij}$ is the weight between the $i$-th neuron in the input layer and the $j$-th neuron in the output layer, so we will have $w_{11}, w_{21}, w_{31}$. 
 
