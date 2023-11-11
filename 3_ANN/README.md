@@ -68,11 +68,15 @@ We will experiment with two common activation functions:
 
 ### Back-propagation
 Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. 
+
 Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically -
 
-* Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
+Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
 $$E = \frac{1}{2} (t-y)^2$$
-* The partial derivative is calculated by
+The partial derivative is calculated by _ 
+* 
+* 
+* 
 
 
 ## Project 2 - two-layer perceptron for XOR relation
