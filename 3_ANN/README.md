@@ -64,21 +64,27 @@ Forward-propagation is the process that calculates the output of a neuron. For o
 $$o_j = \phi(net_j) = \phi (\sum_i w_{ij} x_i)$$
 We will experiment with two common activation functions:
 1. In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$.
-1. In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative which will be useful later is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
+1. In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
 
 ### Back-propagation
 Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. 
 
 Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically -
 
-Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
+* Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
 $$E = \frac{1}{2} (t-y)^2$$
 
 * The partial derivative is calculated by _ 
-   $$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial net_j} \frac{\partial net_j}{\partial w_{ij}}$$
+$$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial net_j} \frac{\partial net_j}{\partial w_{ij}}$$
 
-* sdf
-* sdf
+* The first term, 
+$$\frac{\partial E}{\partial o_j} = \frac{\partial E}{\partial y} = y-t$$
+
+* The second term depends on the activation function being used, 
+$$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \phi(net_j)(1-\phi(net_j))$$
+
+* The last term, 
+$$\frac{\partial net_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} (\sum_i w_{ij} x_i)= x_i$$
 
 
 ## Project 2 - two-layer perceptron for XOR relation
