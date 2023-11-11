@@ -77,18 +77,19 @@ $$E = \frac{1}{2} (t-y)^2$$
 * The partial derivative is calculated by _ 
 $$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial net_j} \frac{\partial net_j}{\partial w_{ij}}$$
 
-* The first term, 
+   * The first term, 
 $$\frac{\partial E}{\partial o_j} = \frac{\partial E}{\partial y} = y-t$$
 
-* The second term depends on the activation function being used, 
+   * The second term depends on the activation function being used, 
 $$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \phi(net_j)(1-\phi(net_j))$$
 for binary sigmoid function, and 
 $$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \sech^2(net_j)$$
-for hyperbolic tangent function
+for hyperbolic tangent function.
 
-* The last term, 
+   * The last term, 
 $$\frac{\partial net_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} (\sum_i w_{ij} x_i)= x_i$$
 
+* sdfij
 
 ## Project 2 - two-layer perceptron for XOR relation
 
