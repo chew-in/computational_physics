@@ -88,7 +88,7 @@ $$\frac{\partial net_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} (\su
 
 * The weight is updated by adding a differential term $\Delta w_{ij}$ to the old weight, where the differential term is learning rate $\alpha$ ($\alpha > 0$) of our pick multiplied by the partial derivative, and multiplied by $-1$. The $-1$ factor is important because for a parabolic shaped error function $E(w_{ij})$, 
    * If $\frac{\partial E}{\partial w_{ij}} > 0$, which corresponds to the right side of the cure, then $\Delta w_{ij} < 0$ would push the point to the left, which lowers the error. 
-   * If $ \frac{\partial E}{\partial w_{ij}} < 0$, which corresponds to the left side of the cure, then $\Delta w_{ij} < 0$ would push the point to the right, which still lowers the error,
+   * If $\frac{\partial E}{\partial w_{ij}} < 0$, which corresponds to the left side of the cure, then $\Delta w_{ij} < 0$ would push the point to the right, which still lowers the error,
 $$\Delta w_{ij} = -\alpha  \frac{\partial E}{\partial w_{ij}}$$
 
 
