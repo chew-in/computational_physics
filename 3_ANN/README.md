@@ -62,17 +62,17 @@ Denote the weight matrix by $W$, where the components $w_{ij}$ is the weight bet
 ### Forward-propagation
 Forward-propagation is the process that calculates the output of a neuron. For our neuron $j$, the output $o_j$ is calculated as first taking a transfer function $\sum$ that transforms the weighted inputs to the net input $net_j$, then apply the activation function $\phi$ of the neuron which transfers the net input $z$ to the activation $\phi (z)$. Altogether, the output $o_j$ is
 $$o_j = \phi(net_j) = \phi (\sum_i w_{ij} x_i)$$
-We will experiment with two common activation functions. 
-
+We will experiment with two common activation functions:
 1. In the case of a binary sigmoid function, $f(z)=\frac{1}{1+e^{-z}}$, and the derivative is $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$.
 1. In the case of a hyperbolic tangent function, $f(x)=\tanh(x)=\frac{1-e^{-2 z}}{1+e^{- 2z}}$, and the derivative which will be useful later is $\frac{d\phi}{dz}(z)=\sech^2(x)=(\frac{2}{e^z+e^{-z}})^2$.
 
 ### Back-propagation
 Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. 
 Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically -
-Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
-$E = \frac{1}{2} (t-y)^2$
-The partial derivative is calculated by
+
+* Using the square error as a loss, the discrepancy or error $E$ between the target output $t$ and the actual output $y$ is,
+$$E = \frac{1}{2} (t-y)^2$$
+* The partial derivative is calculated by
 
 
 ## Project 2 - two-layer perceptron for XOR relation
