@@ -39,9 +39,13 @@ $$\frac{\partial C_0}{\partial w^{(L)}} =2(a^{(L)}-y) \sigma’(z^{(L)}) a^{(L-1
    - Average cost function for all training example for batch training, 
 $$\frac{\partial C}{\partial w^{(L)}} = \frac{1}{n} \sum_{k=0}^{n-1} \frac{\partial C_k}{\partial w^{(L)}}$$
 
-* Learning rate. The plot below shows the mean squared error of the training set as a function of the training epoch number, for both sigmoid function (in cyan) and hyperbolic tangent transfer function (in grey), for various learning rates (indicated by different linewidths). We rely on this plot to pick the most optimized learning rate for each transfer function. This is in agreement with the paper. 
+* Learning rate. The plot below shows the mean squared error of the training set as a function of the training epoch number, for both sigmoid function (in cyan) and hyperbolic tangent transfer function (in grey), for various learning rates (indicated by different linewidths). We rely on this plot to pick the most optimized learning rate for each transfer function. This is in agreement with the paper.
+ 
+![cost_vs_epoch](./plots/cost_vs_epoch.png)
 
 * Performance of test cases. The test errors of the two transfer functions at the most optimized learning rate are compared in the following plot - tanh works but sigmoid doesn’t. For tanh, both the training error and the test error are low; for sigmoid, the training error is low but the test error is very high. Let’s compare the two functions that look very similar - sigmoid ranges from $0$ to $1$ and , and tanh ranges from $-1$ to $1$ and $\tanh(0)=0$. This makes all the difference because given the same net input, say $0$, tanh predicts $0$ (which is correct) while sigmoid predicts $0.5$ (which is wrong). But the calculated gradient term is $0$ for both since it is a product of three terms including the input $0$. As a result, even though the sigmoid function sees a discrepancy between the predicted output $0.5$ and the desired output $0$, it does not have the suitable instrument to correct for the error in the gradient descent algorithm. So, without including a bias term, sigmoid is not suitable to be the transfer function for the problem at hand where the input/ output function crosses the origin.
+
+![test_performance](./plots/test_performance.png)
 
 
 ## Project 2 - two-layer perceptron for XOR relation
