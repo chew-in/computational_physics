@@ -26,19 +26,7 @@ Test set:
 * Transfer function. In general, a nonlinear transfer function is needed to bound the output. We experiment with both sigmoid function $f(z)=\frac{1}{1+e^{-z}}$, and hyperbolic tangent tanh function $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$. 
 
 * Gradient descent. Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically -
-
-$$E = \frac{1}{2} (t-y)^2$$
-
-$$\frac{\partial E}{\partial w_{ij}}=\frac{\partial E}{\partial o_j} \frac{\partial o_j}{\partial net_j} \frac{\partial net_j}{\partial w_{ij}}$$
-
-where 
-$$\frac{\partial E}{\partial o_j} = \frac{\partial E}{\partial y} = y-t$$
-
-$$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \phi(net_j)(1-\phi(net_j))$$
-
-$$\frac{\partial o_j}{\partial net_j}  =  \frac{\partial \phi(net_j)}{\partial net_j} = \sech^2(net_j)$$
-
-$$\frac{\partial net_j}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}} (\sum_i w_{ij} x_i)= x_i$$
+$$\frac{\partial C_0}{\partial w^{(L)}} = 2(a^{(L)}-y)\sigma'(z^{(L)}) a^{(L-1)}$$
 
 * Learning rate. The plot below shows the mean squared error of the training set as a function of the training epoch number, for both sigmoid function (in cyan) and hyperbolic tangent transfer function (in grey), for various learning rates (indicated by different linewidths). We rely on this plot to pick the most optimized learning rate for each transfer function. This is in agreement with the paper. 
 
