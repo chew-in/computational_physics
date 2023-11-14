@@ -25,7 +25,7 @@ Test set:
 
 * Transfer function. In general, a nonlinear transfer function is needed to bound the output. We experiment with both sigmoid function $\sigma(z)=\frac{1}{1+e^{-z}}$, and hyperbolic tangent tanh function $\tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}$.
 
-* Gradient descent. Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically, let weights be denoted by $w$, activation of the last layer neuron is $a^{(L)}$, 
+* Gradient descent. Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error, a.k.a. cost function. One commonly used algorithm to find the set of weights that minimizes the cost function is gradient descent. Gradient descent algorithm calculates the partial derivative of the cost function with respect to each weight, and take a step at the opposite direction for maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically, let weights of layer $L$ be denoted by $w^{(L)}$, activation of the last layer neuron is $a^{(L)}$, 
    - Cost function for first training example, 
 $$C_0= (a^{(L)}-y)^2$$
 Partial derivative of this cost function w.r.t. each weight, 
