@@ -23,10 +23,21 @@ Test set:
 
 * Architecture. This neural network has only one single layer, with three input neurons, one output neuron, and a weight matrix of the shape $3 \times 1$. There is no hidden layer of neurons between the input and output. We do not include a bias term here to keep the architecture as simple as possible. 
 
-* Transfer function. In general, a nonlinear transfer function is needed to bound the output. We experiment with both sigmoid function $f(z)=\frac{1}{1+e^{-z}}$, and hyperbolic tangent tanh function $\frac{d\phi}{dz}(z)=\phi(z) (1 - \phi (z))$. 
+* Transfer function. In general, a nonlinear transfer function is needed to bound the output. We experiment with both sigmoid function $\sigma(z)=\frac{1}{1+e^{-z}}$, and hyperbolic tangent tanh function $\tanh(z)=\frac{e^{z}-e^{-z}}{e^{z}+e^{-z}}$.
 
-* Gradient descent. Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically -
-$$\frac{\partial C_0}{\partial w^{(L)}} = 2(a^{(L)}-y)\sigma'(z^{(L)}) a^{(L-1)}$$
+* Gradient descent. Back-propagation is an general algorithm that performs a backward pass to adjust the parameters of a neural network, aiming to minimize error. One commonly used algorithm to find the set of weights that minimizes the error is gradient descent. Gradient descent algorithm calculates the partial derivative $\frac{\partial E}{\partial w_{ij}}$ of the error $E$ with respect to a weight $w_{ij}$, and take a step in this direction as it causes the maximal decrease of the error. The size of the step is determined by the learning rate. Mathematically, let weights be denoted by $w$, activation of the last layer neuron is $a^{(L)}$, 
+   - Cost function for first training example, 
+$$C_0= (a^{(L)}-y)^2$$
+Partial derivative of this cost function w.r.t. each weight, 
+$$\frac{\partial C_0}{\partial w^{(L)}} = \frac{\partial C_0}{\partial a^{(L)}} \frac{\partial a^{(L)}}{\partial z^{(L)}}  \frac{\partial z^{(L)}}{\partial w^{(L)}}$$
+   - Term by term,
+$$\frac{\partial C_0}{\partial a^{(L)}} = 2(a^{(L)}-y)$$
+$$\frac{\partial a^{(L)}}{\partial z^{(L)}} =\sigma’(z^{(L)})$$
+$$\frac{\partial z^{(L)}}{\partial w^{(L)}} =a^{(L-1)}$$
+   - Altogether, 
+$$\frac{\partial C_0}{\partial w^{(L)}} =2(a^{(L)}-y) \sigma’(z^{(L)}) a^{(L-1)}$$
+   - Average cost function for all training example for batch training, 
+$$\frac{\partial C}{\partial w^{(L)}} = \frac{1}{n} \sum_{k=0}^{n-1} \frac{\partial C_k}{\partial w^{(L)}}$$
 
 * Learning rate. The plot below shows the mean squared error of the training set as a function of the training epoch number, for both sigmoid function (in cyan) and hyperbolic tangent transfer function (in grey), for various learning rates (indicated by different linewidths). We rely on this plot to pick the most optimized learning rate for each transfer function. This is in agreement with the paper. 
 
