@@ -100,7 +100,7 @@ $$\frac{\partial C}{\partial w^{(L)}} = \frac{1}{n} \sum_{k=0}^{n-1} \frac{\part
 
 We will implement the XOR logic on the perceptron as described in the following truth table. See xxx notebook for details.
 
-Training set: 
+Training set, original: 
 | Input 1    | Input 2    | Input 3    | Output    |
 | ----------- | ----------- | ----------- | ----------- |
 | 0      | 0      | 1      | 0      |
@@ -108,12 +108,44 @@ Training set:
 | 1      | 0      | 1      | 1      |
 | 1      | 1      | 1      | 0      |
 
-Test set:
+Test set, original:
 | Input 1    | Input 2    | Input 3    | Output    |
 | ----------- | ----------- | ----------- | ----------- |
 | 0      | 0      | 0      | 0      |
 | 0      | 1      | 0      | 1      |
 | 1      | 0      | 0      | 1      |
+| 1      | 1      | 0      | 0      |
+
+Training set, expand: 
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 1      | 0      |
+| 0      | 1      | 1      | 1      |
+| 1      | 0      | 1      | 1      |
+| 1      | 1      | 1      | 0      |
+| 0      | 0      | 0      | 0      |
+
+Test set, expand:
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 1      | 0      | 1      |
+| 1      | 0      | 0      | 1      |
+| 1      | 1      | 0      | 0      |
+
+Training set, scramble: 
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 1      | 0      |
+| 0      | 1      | 1      | 0      |
+| 1      | 0      | 1      | 1      |
+| 1      | 0      | 0      | 1      |
+
+Test set, scramble:
+| Input 1    | Input 2    | Input 3    | Output    |
+| ----------- | ----------- | ----------- | ----------- |
+| 0      | 0      | 0      | 0      |
+| 0      | 1      | 0      | 1      |
+| 1      | 1      | 1      | 0      |
 | 1      | 1      | 0      | 0      |
 
 
