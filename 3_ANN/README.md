@@ -98,7 +98,7 @@ $$\frac{\partial C}{\partial w^{(L)}} = \frac{1}{n} \sum_{k=0}^{n-1} \frac{\part
 
 ## Project 2 - two-layer perceptron for XOR relation
 
-We will implement the XOR logic on the perceptron as described in the following truth table. See xxx notebook for details.
+* Data. We have three binary inputs and one binary output, whose relationship is described by Output = (Input 1) XOR (Input 2), i.e. the Output is 1 if and only if exactly one of Input 1 and Input 2 is 1. The original, expanded, and scrambled datasets are partitioned as before.
 
 Training set, original: 
 | Input 1    | Input 2    | Input 3    | Output    |
@@ -148,5 +148,19 @@ Test set, scramble:
 | 1      | 1      | 1      | 0      |
 | 1      | 1      | 0      | 0      |
 
+* Motivation. A single-layer perceptron is not sufficient for describing the XOR relationship. This is because the weighted sum of the two inputs is linear and monotonic with the inputs, and the two transfer functions to choose from are also monotonic functions, this means that the output cannot be low for 00, high for 01 or 10, and low again for 11. This necessitates a more complicated two-layer perceptron. 
 
+Feasibility. A network of perceptrons is a feasible choice for implementing XOR logic, a.k.a., bitwise sum logic. In fact, we can use networks of perceptrons to compute any logical function. This follows from the fact that NAND gate is a universal gate for computation, meaning that any digital logic can be represented as composites of NAND gates. In particular, the XOR logic $x_1 \oplus x_2$ can be rewritten as $(x_1 \oplus x_2) \oplus (x_1 \oplus x_2)$. A NAND gate can be implemented as a perceptron with two inputs $x_1, x_2$, with weights $w_1 = -2, w_2 = -2$ respectively, and bias $b = 3$. Our network of perceptron allows even more flexibility than just an assortment of strictly NAND gates, and we will show that the XOR logic can be implemented as a simple two-layer perceptron.
+
+* Backpropagation. 
+
+* Learning rate. The plots below shows the training error as a function of the training epoch number, of the original, expanded, and scrambled training sets. Each plot compares sigmoid and tanh transfer functions, and various learning rates. This plot is used to pick the most optimized learning rate for each transfer function. 
+
+![train_original](./plots/train_XOR_original.png)
+
+![train_expand](./plots/train_XOR_expand.png)
+
+![train_scramble](./plots/train_XOR_scramble.png)
+
+## Project 3 - neural network for MNIST data
 
