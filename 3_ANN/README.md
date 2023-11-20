@@ -171,5 +171,17 @@ Test set, scramble:
 
 ![train_scramble](./plots/train_XOR_scramble.png)
 
+* Testing. Performance of test cases on optimized learning rate are plotted for original, expanded, and scrambled XOR datasets. A few observations: 
+   - tanh successfully predicts the test cases accurately and consistently, but sigmoid fails on the test cases even when the training error is low.
+   - In particular, the large errors for sigmoid comes from the mathematical difference between sigmoid and tanh functions, even though their overall shapes look similar. Specifically, sigmoid ranges from $0$ to $1$ and $s(0)=0.5$, whereas tanh ranges from $-1$ to $1$ and $\tanh(0)=0$. 
+   - This makes all the difference because given the same net input, say $0$, tanh predicts $0$ (which is correct) while sigmoid predicts $0.5$ (which is wrong). But the calculated gradient term is $0$ for both since it is a product of three terms including the input $0$. As a result, even though the sigmoid function sees a discrepancy between the predicted output $0.5$ and the desired output $0$, it does not have the suitable instrument to correct for the error in the gradient descent algorithm. One caveat is that sigmoid could adjust the weights so that the net input is very negative, but this approach biases other results. So, without including a bias term, sigmoid is not suitable to be the transfer function for the problem at hand where the input/ output function crosses the origin.
+
+![test_original](./plots/test_XOR_original.png)
+
+![test_expand](./plots/test_XOR_expand.png)
+
+![test_scramble](./plots/test_XOR_scramble.png)
+
+
 ## Project 3 - neural network for MNIST data
 
