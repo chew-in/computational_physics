@@ -158,11 +158,10 @@ Test set, scramble:
    - Activation of first layer: $a_1(x)=\sigma (w_1 \cdot x +b_1)$
    - Net input of second layer: $z_2(x) = w_2 \cdot z_1(x) + b_2$
    - Activation of second layer: $a_2(x) = \sigma (w_2 \cdot z_2(x) + b_2)$
-   - Cost function: $C(w,b) := \frac{1}{2n} \sum_x |y(x)-a(x)|^2$
-
-
-
-
+   - Cost function: $C(w,b) = \frac{1}{2n} \sum_x |y(x)-a(x)|^2$
+   - Gradient descent step: $\Delta w_{1,ij} = -\eta \frac{\partial C}{\partial w_{1,ij}}, \Delta w_{2,ij} = -\eta \frac{\partial C}{\partial w_{2,ij}}$
+   - For second layer weights: $\frac{\partial C}{\partial w_{2,ij}} = \frac{1}{n} \sum_x |y(x)-a(x)| \cdot \sigma' (w_2 \cdot \sigma (w_1 \cdot x +b_1) + b_2) \cdot \sigma (w_1 \cdot x +b_1)$
+   - For first layer weights: $\frac{\partial C}{\partial w_{1,ij}} = \frac{1}{n} \sum_x |y(x)-a(x)| \cdot \sigma' (w_2 \cdot \sigma (w_1 \cdot x +b_1) + b_2) \cdot w_2 \cdot \sigma' (w_1 \cdot x +b_1) \cdot x$
 
 * Learning rate. The plots below shows the training error as a function of the training epoch number, of the original, expanded, and scrambled training sets. Each plot compares sigmoid and tanh transfer functions, and various learning rates. This plot is used to pick the most optimized learning rate for each transfer function. 
 
