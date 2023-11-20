@@ -154,8 +154,15 @@ Test set, scramble:
 
 * Gradient descent. The backpropagation step in the gradient descent algorithm is nothing but applying chain rule in multi-variable calculus. The chain rule for a two-layer perceptron is slightly more complicated than for a single-layer perceptron. Using linear algebra notation, let $x$ be the input vector of dimension $(3, 4)$ representing three inputs $x_1, x_2, x_3$, for a total of $4$ training data. Let $w_1$ be the weight matrix connecting the input layer and the hidden layer, of dimension $(3, 4)$, where $4$ represents the number of neurons in the hidden layer, the choice of which is more art than science. Let $w_2$ be the weight matrix connecting the hidden layer and the hidden layer, of dimension $(4, 1)$. For our network, we will restrict the biases to be $0$. Let $a_1$ denote the activation of the hidden layer neuron, which is of dimension $4$. Let $a_2$ denote the output, which is equivalent to the activation of the second layer neuron, of dimension $1$. Thus, 
 
-   - Net input of first layer is given by: $z_1(x) = w_1 \cdot x +b_1$
-   
+   - Net input of first layer: $z_1(x) = w_1 \cdot x +b_1$
+   - Activation of first layer: $a_1(x)=\sigma (w_1 \cdot x +b_1)$
+   - Net input of second layer: $z_2(x) = w_2 \cdot z_1(x) + b_2$
+   - Activation of second layer: $a_2(x) = \sigma (w_2 \cdot z_2(x) + b_2)$
+   - Cost function: $C(w,b) := \frac{1}{2n} \sum_x |y(x)-a(x)|^2$
+
+
+
+
 
 * Learning rate. The plots below shows the training error as a function of the training epoch number, of the original, expanded, and scrambled training sets. Each plot compares sigmoid and tanh transfer functions, and various learning rates. This plot is used to pick the most optimized learning rate for each transfer function. 
 
