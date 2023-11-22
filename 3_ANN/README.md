@@ -1,7 +1,7 @@
 # Artificial Neural Network (ANN)
-In this project, we will build 1) a single layer perceptron for equivalence logic, 2) a double layer perceptron for XOR logic, 3) a full neural network for categorizing MNIST dataset, in Python.
+In this project, we will build 1) a single layer perceptron for equivalence logic, 2) a double layer perceptron for XOR logic, 3) a full neural network for categorizing MNIST dataset, all in Python. 
 
-Acknowledgement: 1) 3Blue1Brown video, 2) http://neuralnetworksanddeeplearning.com/index.html
+Code file located at `./code/perecptron.ipynb`. Acknowledgement: 1) 3Blue1Brown video, 2) http://neuralnetworksanddeeplearning.com/index.html
 
 ## Project 1 - single-layer perceptron for equivalence
 * Data. We have three binary inputs and one binary output, whose relationship is described by Output = Input 1. 
