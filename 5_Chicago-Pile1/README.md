@@ -1,4 +1,5 @@
 # Chicago-Pile No. 1 (CP-1) Simulation
+## Background
 It’s important to establish some background physics for understanding how a nuclear reactor works.
 * Nuclear reaction. A nuclear reaction involves input and output reactants, and obeys the conservation of total mass-energy (i.e. relativistic mass-energy + kinetic energy). The Q-value of a reaction describes if a reaction liberates energy or demands a threshold energy to cause it to happen,
 $$Q=\sum KE_{output} - \sum KE_{input} = \left(\sum m_{input} - \sum m_{output}\right) c^2$$
@@ -27,17 +28,23 @@ where $\alpha$ is some fitting parameter, and $\alpha \sim 1.29$ MeV for $^{235}
 * Reactor criticality. Reactor criticality factor, denoted by $k$, is the key figure of merit in whether ($k \geq 1$) or not ($k < 1$) a reactor can achieve a self-sustaining chain reaction. An ideal reactor has control mechanisms in place to maintain $k=1$. Criticality is achieved when the number of neutrons inside a reactor increases with time. For a mixture of $^{235}U$ and $^{238}U$ isotopes in our reactor, let $F$ denote the fractional abundance of $^{235}U$, the total cross section for each isotope is
    $$\sigma_5 = \sigma_{f5} + \sigma_{c5}, \ \sigma_8 = \sigma_{f8} + \sigma_{c8}$$
    $$\sigma_{total} = F\sigma_{5} + (1-F)\sigma_{8}$$
+   - If fission of a $^{235}U$ nucleus liberates on average $\nu_5$ secondary neutrons, and fission of a $^{238}U$ nucleus liberates on average $\nu_8$ secondary neutrons, then the total number of secondary neutrons created by one initial neutron is
+   $$k = \frac{ F \nu_5 \sigma_{f5} + (1-F)\nu_8 \sigma_{f8}}{\sigma_{total}}$$
+   - One will find that for fast neutrons in natural uranium, $k_{fast} = 0.283$, and since $k_{fast} < 1$, a self-sustaining chain reaction using unmoderated neutrons with natural uranium is impossible. However, for slow neutrons in natural uranium, $k_{slow} = 1.337$, and since $k_{slow} > 1$, a self-sustaining reaction with moderated neutrons and natural uranium is possible. 
+* Neutron thermalization. Fermi’s CP-1 reactor used graphite as a moderator to slow neutrons emitted from fissioning $^{235}U$ nuclei to so-called “thermal” speeds to take advantage of the large fission cross-section of that isotope for neutrons of such energy. Graphite is chosen for small capture cross-section for neutrons. “Thermal speed” is the Maxwellian most probable velocity for a neutron at approximately room temperature,
+   $$v_{mp} = \sqrt{\frac{2k_B T}{m}}=2217\ \text{m/s} \sim 0.025 \ \text{eV}$$
+   - In comparison, the secondary neutrons emerged from a fissioned nucleus, have a typical energy of $\sim 2$ MeV. These secondary neutrons from then on undergo many scattering events, until becoming thermalized. In order to determine the geometry for the graphite moderator to ensure the secondary neutrons be suitably thermalized, we need to first calculate what fraction of energy is lost per scattering event. For a head-on collision between a neutron of mass $m_n$ with initial speed $v_0$ and a Carbon atom of mass $m_C$, the neutron will recoil with speed $v$ given by 
+   $$v=|\frac{m_n-m_C}{m_n+m_C}| v_0$$
+   - Since $m_C \sim 12 m_n$, the recoil speed is $11/13$ of the original speed, so the recoil kinetic energy is $(11/13)^2$ of the original. Therefore, the number of collisions required to reduce a neutron emitted from fission event to a thermal neutron is then
+   $$N=\frac{\log(E/E_0)}{2\log(11/13)}$$
+   which is calculated to be about $54$ in our case if all collisions are head-on.
+   - For the graphite density of $\rho=1.62\ \text{g/cm}^3$, and elastic scattering cross-section of $^{12}C$ of $4.746\ \text{bn}$, the mean free path is calculated to be 
+   $$\lambda_s=  \frac{1}{\sigma n} = 2.6 \ \text{cm}$$
+   - Quoting statistical mechanics result of a particle taking $N$ random steps of length $\lambda_s$, the average displacement from the starting point will be $\sqrt{N} \lambda \sim 19 \ \text{cm}$.
 
+In this project I will numerically simulate and optimize the geometry of the graphite moderator, and compare the simulation results to literature.
 
-
-
-
-
-
-* Slow neutron. In October, 1934, Fermi discovered accidentally that if the bombarding neutrons were caused to be slowed (“moderated”) before hitting the target element by having them first pass through water or paraffin, the rate of activity of the induced radioactivities could in some cases be drastically increased. Fermi attributed this to the neutrons having more time in the vicinity of target nuclei and hence a greater probability of reacting with them. 
-
-
-## Flowchart
+## Simulation flowchart
 
 ## More geometries
 
