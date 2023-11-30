@@ -6,7 +6,34 @@ $$Q=\sum KE_{output} - \sum KE_{input} = \left(\sum m_{input} - \sum m_{output}\
 * Nuclear reactor. Building a nuclear reactor involves sustaining a neutron-moderated chain reaction, where on average at least one neutron will be liberated per fission event. This is denoted by $k$. 
 * Energy spectrum of fission neutrons. When nuclei fission, and typically emit two or three neutrons, these secondary neutrons exhibit a spectrum of kinetic energies, which can be expressed as 
 $$P(E)dE \sim \sqrt{E}\exp (-E/\alpha)dE$$
-where $alpha$ is some fitting parameter, and $alpha \sim 1.29$ MeV for $^{235}U$.
+where $\alpha$ is some fitting parameter, and $\alpha \sim 1.29$ MeV for $^{235}U$.
+* Fission barrier. Any nucleus (e.g. an isotope of Uranium) can be induced to fission under neutron bombardment, but the difficulty of which is specified by a characteristic fission barrier. The fission barrier for $^{236}U$ is exceeded by the Q-value for the relevant reaction, whereas the fission barrier for  $^{239}U$ is higher than the Q-value for the relevant reaction, and this makes all the difference why  $^{235}U$ is a “fissile” nuclide, while  $^{238}U$ is “fissionable”.
+* Critical mass. The critical mass is the amount of fissile material needed for a workable nuclear weapon. If the sample of fissile material is too small, the escape probability is high, hence the reason why there is a minimum size of material needed for all nucleus inside the material to be fissioned. 
+* Mean Free Path. Understanding Mean Free Path (MFP) for neutron travel is important for calculating reactor criticality. Suppose we have a thin slab of material of thickness $s$, cross-sectional area $\Sigma$, bombarded by neutrons at a rate of $R_0$ neutrons per unit area per unit time, then the incident neutron flux is per unit time is given by $R_0 \Sigma$.
+   - On the nuclei side, let $\rho$ be the density of material, $N_A$ be Avogadro’s number, $A$ be the atomic weight of the material, $\sigma$ be the cross-section for the reaction (representing in unit of area how reactive each nucleus presents itself to the incoming neutrons). Then the number density of nuclei in the material is $n=\frac{\rho N_A}{A}$.
+   - The fraction of surface area available for reactions to occur is the total number of nuclei (i.e. volume $\Sigma s$ times density $n$) times the fraction of surface area for the particular reaction to occur $\Sigma sn(\sigma/\Sigma) =sn\sigma$.
+   - Thus, the rate of reactions $R$ is the product of incident neutron flux times the fraction of surface area available for reactions, $R=(R_0 \Sigma)(sn\sigma)$.
+   - For an individual incident neutron, the probability of it participating in a reaction is $P_{react} = sn \sigma$, and the probability of it escaping the slab is $P_{escape} = 1- P_{react} = 1-sn \sigma$.
+   - For a block of material of thickness $L$, calculus can be used to figure out the probability of an incident neutron escaping the whole block, as follows. The number of slabs is therefore $L/s$. The probability of an incident neutron escaping the whole block is the product of it escaping each slab, $P_{escape}=(1-sn\sigma)^{L/s}$.
+   - Since each slab can be made infinitesimally thin, define $z=-sn\sigma$, then 
+   $$P_{escape}=(1+z)^{\sigma nL/z} = [(1+z)^{1/z}]^{-\sigma nL} \rightarrow e^{-\sigma nL}$$
+   - A useful parameter is the mean free path or characteristic length for the reaction, which is defined as the average distance a neutron will travel before undergoing a reaction. This can be calculated as averaging the number of neutrons $dN_x$ that penetrate to distance $x$ and $x+dx$ over all possible travel distances. Assume $N_0$ neutrons are incident at the $x=0$ surface, then the number of neutrons consumed $dN_x$ between $x$ and $x+dx$ is
+   $$dN_x = N_0 e^{-\sigma nx}(\sigma ndx)$$
+   - The mean free path $\lambda_s$ is,
+   $$\lambda_s = \frac{1}{N_{react}}\int_0^L xdN_x =\frac{1}{N_0 (1-e^{-\sigma nL})} \int_0^L (N_0\sigma n)x e^{-\sigma nx}dx =\frac{1}{\sigma n} \frac{1-e^{\sigma nL}(1+\sigma nL)}{1-e^{\sigma nL}}$$
+   - For thick slab, $\sigma nL$ is large, then 
+   $$\lambda_s \rightarrow \frac{1}{\sigma n}$$
+* Slow neutron. Fermi discovered accidentally that if the bombarding neutrons were caused to be slowed (“moderated”) before hitting the target element, the rate of the induced radioactivities could be drastically increased. When a nucleus is struck by a neutron, one of three things will in general happen: (1) The nucleus may fission $(f)$; (2) The nucleus may capture the neutron without fissioning $(c)$; or (3) The neutron may scatter from the nucleus. For example, the fissility parameter for fast neuron with $^{235}U$ is $1.235$, whereas the fissility parameter for slow neuron with $^{235}U$ is $584.4$. Note that even though slow neutrons are extremely useful for maximizing criticality for reactors, they are not applicable for nuclear bombs as the key metric there is the energy released, which goes as the inverse square of the reaction time.
+* Reactor criticality. Reactor criticality factor, denoted by $k$, is the key figure of merit in whether ($k \geq 1$) or not ($k < 1$) a reactor can achieve a self-sustaining chain reaction. An ideal reactor has control mechanisms in place to maintain $k=1$. Criticality is achieved when the number of neutrons inside a reactor increases with time. For a mixture of $^{235}U$ and $^{238}U$ isotopes in our reactor, let $F$ denote the fractional abundance of $^{235}U$, the total cross section for each isotope is
+   $$\sigma_5 = \sigma_{f5} + \sigma_{c5}, \ \sigma_8 = \sigma_{f8} + \sigma_{c8}$$
+   $$\sigma_{total} = F\sigma_{5} + (1-F)\sigma_{8}$$
+
+
+
+
+
+
+
 * Slow neutron. In October, 1934, Fermi discovered accidentally that if the bombarding neutrons were caused to be slowed (“moderated”) before hitting the target element by having them first pass through water or paraffin, the rate of activity of the induced radioactivities could in some cases be drastically increased. Fermi attributed this to the neutrons having more time in the vicinity of target nuclei and hence a greater probability of reacting with them. 
 
 
