@@ -1,12 +1,23 @@
-# Computational Physics
-This project includes my solution and write-up for a Computational Physics class I was teaching, where we solve interesting problems in physics, in FORTRAN 77 and Python. 
+# Chicago-Pile No. 1 (CP-1) Simulation
+It’s important to establish some background physics for understanding how a nuclear reactor works.
+* Nuclear reaction. A nuclear reaction involves input and output reactants, and obeys the conservation of total mass-energy (i.e. relativistic mass-energy + kinetic energy). The Q-value of a reaction describes if a reaction liberates energy or demands a threshold energy to cause it to happen,
+$$Q=\sum KE_{output} - \sum KE_{input} = \left(\sum m_{input} - \sum m_{output}\right) c^2$$
+* Fission of Uranium. Neutron-induced uranium is the process underlying many nuclear bombs and reactors, one way of which is the extremely energetic splitting of a $^{235}U$ nucleus into barium and krypton accompanied by the release of three neutrons. The fission energy latent in a small amount of the reactants is enormous. 
+* Nuclear reactor. Building a nuclear reactor involves sustaining a neutron-moderated chain reaction, where on average at least one neutron will be liberated per fission event. This is denoted by $k$. 
+* Energy spectrum of fission neutrons. When nuclei fission, and typically emit two or three neutrons, these secondary neutrons exhibit a spectrum of kinetic energies, which can be expressed as 
+$$P(E)dE \sim \sqrt{E}\exp (-E/\alpha)dE$$
+where $alpha$ is some fitting parameter, and $alpha \sim 1.29$ MeV for $^{235}U$.
+* Slow neutron. In October, 1934, Fermi discovered accidentally that if the bombarding neutrons were caused to be slowed (“moderated”) before hitting the target element by having them first pass through water or paraffin, the rate of activity of the induced radioactivities could in some cases be drastically increased. Fermi attributed this to the neutrons having more time in the vicinity of target nuclei and hence a greater probability of reacting with them. 
 
-## Table of Content
-- [ ] Random Number Generator (RNG), see folder `RNG` - introduce and perform statistical analysis on various common techniques for RNG
-- [ ] Cellular Automaton & Emergence, see folder `emergence` - build Conway’s game of life and simulate collective behavior
-- [ ] Artificial Neural Network (ANN), see folder `ANN` - understand how deep learning works under the hood
-- [ ] Monte Carlo method, see folder `MC`
-- [ ] Numerical Simulation, see folder `numerical` - optimize rod distance in Chicago-Pile 1
-- [ ] Finite Element Analysis (FEA), see folder `FEA` - apply FEA technique in a heat diffusion example
 
-## Another 
+## Flowchart
+
+## More geometries
+
+## Prompt
+One way (of several possible) to achieve a self-sustaining nuclear chain reaction is to moderate fission neutrons originating in fuel rods so that the probability (cross section) of their producing further fissions is maximized. As discussed in class, materials such as graphite are ideal for this. Our goal is to estimate (for an approximate geometry) the optimal thickness of moderator that needs to be intercalated between fuel elements in a reactor pile for a self-sustaining chain reaction to take place: too little moderator will result in neutrons that are too “hard” (meaning “energetic”) to have a high chance of producing ensuing fission. Too much moderator will give them a chance to be lost by capture via 12C(nthermal,g)13C, rendering a self-sustaining reaction impossible. Finding the happy medium was one of the critical steps in building Chicago Pile No. 1 (CP-1) under the Stagg Field Stadium. Using the Monte Carlo method we can easily make a decision, the goal of this homework project (Mr. Fermi could have used your help –and that of an electronic computer-).
+
+Using the attached flowchart and the subroutines provided and discussed in class, build a program that tracks neutrons emitted from a point-like fission source traveling into a graphite slab (infinite along x and y) of thickness D (see figure below). Plot the percentage of neutrons a) backscattered, b) absorbed, c) transmitted, d) transmitted with energies below ~500 eV (what we will consider here as optimal -or rather good enough- for producing further fissions), as a function of D, for 1 cm < D < 50 cm. Choose the optimal value of D (reason your choice). Plot the spectrum of exiting neutron energies for this choice of D, and compare it with the emission spectrum from the source. How well do you expect your recommendation to work for the more realistic situation of long fuel rods inserted in moderator? (Depicted in the figure on the right). Courageous students should not shy away from attempting a true 3D arrangement of rods. A simpler alternative approach is a single cell of a cubic lattice with a central uranium sphere, as described in class. Compare your answer (optimal D) with typical distances between uranium pellets in CP-1 (see “Physics of the Manhattan Project”, posted on Canvas).
+
+Is there a better way to find this optimal thickness? Instead of neutrons transmitted or reflected with energy below 500 eV, tally the sum of the U235 fission cross sections (an obvious figure-of-merit proportional to the net probability for producing neutron-induced fission) for any transmitted or backscattered neutron. To do this you will need to read the file “u235fission.in” and load the data there into two large arrays (give yourself at least 32,000 elements per array), the first column containing neutron energy in MeV, the second U235 fission cross section in barns. Is the optimal D found in this way closer to what is used in real-life reactors? You can also try a tally composed of the sum of the products of neutron velocity times cross section, much closer to the actual reaction rate, as discussed in class. 
+
