@@ -35,16 +35,32 @@ where $\alpha$ is some fitting parameter, and $\alpha \sim 1.29$ MeV for $^{235}
    $$v_{mp} = \sqrt{\frac{2k_B T}{m}}=2217\ \text{m/s} \sim 0.025 \ \text{eV}$$
    - In comparison, the secondary neutrons emerged from a fissioned nucleus, have a typical energy of $\sim 2$ MeV. These secondary neutrons from then on undergo many scattering events, until becoming thermalized. In order to determine the geometry for the graphite moderator to ensure the secondary neutrons be suitably thermalized, we need to first calculate what fraction of energy is lost per scattering event. For a head-on collision between a neutron of mass $m_n$ with initial speed $v_0$ and a Carbon atom of mass $m_C$, the neutron will recoil with speed $v$ given by 
    $$v=|\frac{m_n-m_C}{m_n+m_C}| v_0$$
-   - Since $m_C \sim 12 m_n$, the recoil speed is $11/13$ of the original speed, so the recoil kinetic energy is $(11/13)^2$ of the original. Therefore, the number of collisions required to reduce a neutron emitted from fission event to a thermal neutron is then
+   - Since $m_C \sim 12 m_n$, the recoil speed is $11/13$ of the original speed, so the recoil kinetic energy is $(11/13)^2$ of the original kinetic energy. Therefore, the number of collisions required to reduce a neutron emitted from fission event to a thermal neutron is then
    $$N=\frac{\log(E/E_0)}{2\log(11/13)}$$
    which is calculated to be about $54$ in our case if all collisions are head-on.
    - For the graphite density of $\rho=1.62\ \text{g/cm}^3$, and elastic scattering cross-section of $^{12}C$ of $4.746\ \text{bn}$, the mean free path is calculated to be 
    $$\lambda_s=  \frac{1}{\sigma n} = 2.6 \ \text{cm}$$
    - Quoting statistical mechanics result of a particle taking $N$ random steps of length $\lambda_s$, the average displacement from the starting point will be $\sqrt{N} \lambda \sim 19 \ \text{cm}$.
 
-In this project I will numerically simulate and optimize the geometry of the graphite moderator, and compare the simulation results to literature.
+In this project I will numerically simulate and optimize the geometry of the graphite moderator, and compare the simulation results to literature. Since the potential for random variables is present, I will use Monte Carlo simulation to assign multiple values to probabilistic variables to achieve multiple results and then averaging the results to obtain an estimate. What makes the Monte Carlo method powerful is the ability to examine a number of random variables and averages the results, which encompasses more information than starting out with an average. 
+
 
 ## Simulation flowchart
+The program tracks the neutrons in the following manner - 
+1. The incident neutron starts at 3D coordinates $(x, y,z)=(0,0,0)$.
+1. The incoming neutron energy is sampled by the `get_fission_neutron_energy` routine.
+1. The randomized entry angle is determined by the `get_entry_angle` routine. 
+1. The unit velocity vector is built by the `get_velocity_vector` routine.
+1. The distance to next interaction (including multiple cross-sections) is calculated by the `get_free_prop_distance` routine. This is determined with the help of another routine `get_cross_sections` that estimates the cross sections for absorption and elastic scattering based on the neutron energy.
+1. The new position is calculated using the information about the velocity vector and distance till the next interaction by the `get_new_position` routine. 
+1. At the interaction site, there can be different processes happening: a) backscattered, b) absorbed, c) transmitted, d) transmitted with energies below $\sim 500$ eV. 
+   * If the neutron is backscattered, $z<0$, it is added to the respective counter. Proceed to the next neutron.
+   * If the neutron is transmitted, $z>D$, it is added to the respective counters, depending on if it is “thermalized” or not. Proceed to the next neutron.
+   * If the neutron is absorbed, it is added to the respective counter. Proceed to the next neutron.
+   * If none of these happens, then it is most probably an elastic scattering within the graphite block. The energy loss and scattering angle are calculated by the `get_energy_loss` and `get_scatter_angle` routines. Then, a new trajectory is calculated by the `get_euler` routine. Loop back to the `get_cross_sections` routine to proceed with the next interaction.
+1. Elastic scattering calculation. Suppose a neutron with mass $m_n$ at speed $v_n$ and kinetic energy $T_0$ is incident upon a carbon atom with mass $M$, and the neutron is scattered off at an angle $\psi$ about the $z$ axis at speed $v’$ with kinetic energy $T’$, and the carbon atom is scattered off at an angle $\xi$ about the $z$ axis at speed $v$ with kinetic energy $T$. By conversation of energy $T_0 = T’ + T$ or $m_n v_n^2 = m_n v’^2 + M v^2$, and conservation of momentum $m_n v_n = m_n v’ \cos \psi + M v \cos \xi$, therefore we get 
+$$\frac{T}{T_0} = 4\frac{m_n M}{(m_n + M)^2} \cos^2\xi = 2\frac{m_n M}{(m_n + M)^2} (1- \cos \psi)$$
+$$\frac{T'}{T_0} = \frac{m_n^2}{(m_n + M)^2} \left[\cos \psi \pm \sqrt{(\frac{M}{m_n})^2-\sin^2\psi}\right]^2$$
 
 ## More geometries
 
