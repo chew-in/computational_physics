@@ -18,6 +18,7 @@ where $\alpha$ is some fitting parameter, and $\alpha \sim 1.29$ MeV for $^{235}
    - For a block of material of thickness $L$, calculus can be used to figure out the probability of an incident neutron escaping the whole block, as follows. The number of slabs is therefore $L/s$. The probability of an incident neutron escaping the whole block is the product of it escaping each slab, $P_{escape}=(1-sn\sigma)^{L/s}$.
    - Since each slab can be made infinitesimally thin, define $z=-sn\sigma$, then 
    $$P_{escape}=(1+z)^{\sigma nL/z} = [(1+z)^{1/z}]^{-\sigma nL} \rightarrow e^{-\sigma nL}$$
+   $$P_{react}=1-P_{escape} = 1 - e^{-\sigma nL}$$
    - A useful parameter is the mean free path or characteristic length for the reaction, which is defined as the average distance a neutron will travel before undergoing a reaction. This can be calculated as averaging the number of neutrons $dN_x$ that penetrate to distance $x$ and $x+dx$ over all possible travel distances. Assume $N_0$ neutrons are incident at the $x=0$ surface, then the number of neutrons consumed $dN_x$ between $x$ and $x+dx$ is
    $$dN_x = N_0 e^{-\sigma nx}(\sigma ndx)$$
    - The mean free path $\lambda_s$ is,
@@ -57,17 +58,32 @@ The program tracks the neutrons in the following manner -
    * If the neutron is backscattered, $z<0$, it is added to the respective counter. Proceed to the next neutron.
    * If the neutron is transmitted, $z>D$, it is added to the respective counters, depending on if it is “thermalized” or not. Proceed to the next neutron.
    * If the neutron is absorbed, it is added to the respective counter. Proceed to the next neutron.
-   * If none of these happens, then it is most probably an elastic scattering within the graphite block. The energy loss and scattering angle are calculated by the `get_energy_loss` and `get_scatter_angle` routines. Then, a new trajectory is calculated by the `get_euler` routine. Loop back to the `get_cross_sections` routine to proceed with the next interaction.
+   * If none of these happens, then it is most probably an elastic scattering within the graphite block. The energy loss and scattering angle are calculated by the `get_energy_loss` and `get_scatter_angle` routines. Then, a new trajectory is calculated by the `get_euler_angles` routine. Loop back to the `get_cross_sections` routine to proceed with the next interaction.
 1. Elastic scattering calculation. Suppose a neutron with mass $m_n$ at speed $v_n$ and kinetic energy $T_0$ is incident upon a carbon atom with mass $M$, and the neutron is scattered off at an angle $\psi$ about the $z$ axis at speed $v’$ with kinetic energy $T’$, and the carbon atom is scattered off at an angle $\xi$ about the $z$ axis at speed $v$ with kinetic energy $T$. By conversation of energy $T_0 = T’ + T$ or $m_n v_n^2 = m_n v’^2 + M v^2$, and conservation of momentum $m_n v_n = m_n v’ \cos \psi + M v \cos \xi$, therefore we get 
 $$\frac{T}{T_0} = 4\frac{m_n M}{(m_n + M)^2} \cos^2\xi = 2\frac{m_n M}{(m_n + M)^2} (1- \cos \psi)$$
-$$\frac{T'}{T_0} = \frac{m_n^2}{(m_n + M)^2} \left[\cos \psi \pm \sqrt{(\frac{M}{m_n})^2-\sin^2\psi}\right]^2$$
+$$\frac{T'}{T_0} = \frac{m_n^2}{(m_n + M)^2} \left[\cos \psi \pm \sqrt{\left(\frac{M}{m_n}\right)^2-\sin^2\psi}\right]^2$$
 
-## More geometries
+## Simple Infinite Block Setup
+A Monte Carlo simulation that tracks neutrons emitted from a point-like fission source a graphite slab (infinite along $x$ and $y$) of thickness varied from $1$ cm to $100$ cm, is included in the `./code/CP-1_simulation` file. Below plots the percentage of neutrons a) backscattered, b) absorbed, c) transmitted, d) transmitted and thermalized (the desired case).
 
-## Prompt
-One way (of several possible) to achieve a self-sustaining nuclear chain reaction is to moderate fission neutrons originating in fuel rods so that the probability (cross section) of their producing further fissions is maximized. As discussed in class, materials such as graphite are ideal for this. Our goal is to estimate (for an approximate geometry) the optimal thickness of moderator that needs to be intercalated between fuel elements in a reactor pile for a self-sustaining chain reaction to take place: too little moderator will result in neutrons that are too “hard” (meaning “energetic”) to have a high chance of producing ensuing fission. Too much moderator will give them a chance to be lost by capture via 12C(nthermal,g)13C, rendering a self-sustaining reaction impossible. Finding the happy medium was one of the critical steps in building Chicago Pile No. 1 (CP-1) under the Stagg Field Stadium. Using the Monte Carlo method we can easily make a decision, the goal of this homework project (Mr. Fermi could have used your help –and that of an electronic computer-).
+![graphite_thickness](./plots/graphite_thickness.png)
 
-Using the attached flowchart and the subroutines provided and discussed in class, build a program that tracks neutrons emitted from a point-like fission source traveling into a graphite slab (infinite along x and y) of thickness D (see figure below). Plot the percentage of neutrons a) backscattered, b) absorbed, c) transmitted, d) transmitted with energies below ~500 eV (what we will consider here as optimal -or rather good enough- for producing further fissions), as a function of D, for 1 cm < D < 50 cm. Choose the optimal value of D (reason your choice). Plot the spectrum of exiting neutron energies for this choice of D, and compare it with the emission spectrum from the source. How well do you expect your recommendation to work for the more realistic situation of long fuel rods inserted in moderator? (Depicted in the figure on the right). Courageous students should not shy away from attempting a true 3D arrangement of rods. A simpler alternative approach is a single cell of a cubic lattice with a central uranium sphere, as described in class. Compare your answer (optimal D) with typical distances between uranium pellets in CP-1 (see “Physics of the Manhattan Project”, posted on Canvas).
+The optimal value of $D$ is therefore chosen to be $40$ cm, which is a bit higher than the literature value of $21$ cm documented in the book “Physics of the Manhattan Project”. For this choice of $D$, the exiting spectrum of the moderated neutrons is plotted and compared with the emission spectrum of incident neutrons, where the scaling between the two are adjusted for visualization purposes only.
+
+![optimized_transmit_energies](./plots/optimized_transmit_energies.png)
+
+## More Realistic Geometry
+Another Monte Carlo simulation is done for the geometry that the uranium fuel sphere is at the center of a cubic graphite block of length $D$. In this case there is no such thing as backscattering. And the new optical value of $D$ is longer, about $100$ cm. 
+
+![graphite_thickness_lattice](./plots/graphite_thickness_lattice.png)
+
+For this choice of $D$, the exiting spectrum of the moderated neutrons is plotted and compared with the emission spectrum of incident neutrons, where the scaling between the two are adjusted for visualization purposes only.
+
+![optimized_transmit_energies_lattice](./plots/optimized_transmit_energies_lattice.png)
+
+## More Realistic Cross-section
+To capture the fact that exiting neutrons with different energies have different fission cross sections, and the goal is to maximize the total fission cross section, I read in the file `u235fission.in` which associates neutron energy and $^{235}U$ cross section. 
+
 
 Is there a better way to find this optimal thickness? Instead of neutrons transmitted or reflected with energy below 500 eV, tally the sum of the U235 fission cross sections (an obvious figure-of-merit proportional to the net probability for producing neutron-induced fission) for any transmitted or backscattered neutron. To do this you will need to read the file “u235fission.in” and load the data there into two large arrays (give yourself at least 32,000 elements per array), the first column containing neutron energy in MeV, the second U235 fission cross section in barns. Is the optimal D found in this way closer to what is used in real-life reactors? You can also try a tally composed of the sum of the products of neutron velocity times cross section, much closer to the actual reaction rate, as discussed in class. 
 
