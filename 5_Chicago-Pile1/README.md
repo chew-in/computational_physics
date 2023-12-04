@@ -82,8 +82,9 @@ For this choice of $D$, the exiting spectrum of the moderated neutrons is plotte
 ![optimized_transmit_energies_lattice](./plots/optimized_transmit_energies_lattice.png)
 
 ## More Realistic Cross-section
-To capture the fact that exiting neutrons with different energies have different fission cross sections, and the goal is to maximize the total fission cross section, I read in the file `u235fission.in` which associates neutron energy and $^{235}U$ cross section. 
+To capture the fact that exiting neutrons with different energies have different fission cross sections, and the goal is to maximize the total fission cross section, I read in the file `u235fission.in` which associates neutron energy and $^{235}U$ cross-section, and linearly interpolate cross-section values that don’t have matched energy. 
 
+Below is a plot of an averaged fission cross-section out of all neutrons exiting the graphite block. Given the more careful calculation, the optimized graphite thickness is about $100$ cm. 
 
-Is there a better way to find this optimal thickness? Instead of neutrons transmitted or reflected with energy below 500 eV, tally the sum of the U235 fission cross sections (an obvious figure-of-merit proportional to the net probability for producing neutron-induced fission) for any transmitted or backscattered neutron. To do this you will need to read the file “u235fission.in” and load the data there into two large arrays (give yourself at least 32,000 elements per array), the first column containing neutron energy in MeV, the second U235 fission cross section in barns. Is the optimal D found in this way closer to what is used in real-life reactors? You can also try a tally composed of the sum of the products of neutron velocity times cross section, much closer to the actual reaction rate, as discussed in class. 
+![graphite_thickness_tally](./plots/graphite_thickness_tally.png)
 
