@@ -24,8 +24,9 @@ $$u''(x)=\frac{1}{(\Delta x)^2} \left(u_{i-1} -  2u_{i} + u_{i+1}\right)$$
 Thus, the heat equation differential equation can be approximated by,
 $$\frac{1}{\Delta t} \left(u_{i,j,n+1} -  u_{i,j,n}\right) =\frac{\kappa}{(\Delta x)^2} \left(u_{i-1,j,n} -  2u_{i,j,n} + u_{i+1,j,n}\right) +\frac{\kappa}{(\Delta y)^2} \left(u_{i,j-1,n} -  2u_{i,j,n} + u_{i,j+1,n}\right)$$
 
-By using the alternating-direction method, I have rewritten the future state of each cell as a function of present state of itself and nearest neighbors only. Incidentally, the condition for validity of linear approximation is,
+By using the alternating-direction method, I have rewritten the future state of each cell as a function of present state of itself and nearest neighbors only. Incidentally, the Courant-Fiedrichs-Lewy condition for validity of linear approximation is,
 $$\kappa \left(\frac{1}{(\Delta x)^2}+\frac{1}{(\Delta y)^2}\right) \Delta t \leq \frac{1}{2}$$
+Therefore if I divide the detector cross-section into $1$ cm square lattice cells, the largest time increment I can use to calculate the evolution is $125$ s.
 
 ## Project Description
 This project simulates the temperature behavior of a bubble detector, as the sensitivity of the detector to neutron-induced nuclear recoils depends strongly on temperature. The device is a tall flask of square cross section ($9 \times 9$ cm$^2$) immersed in a temperature-controlled water bath, which could be approximated as a 2D heat diffusion problem, i.e. 
