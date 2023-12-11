@@ -41,9 +41,9 @@ $$T(0,y,t) = T(9,y,t) = T(x,0,t) = T(x,9,t) = T_{bath}(t)$$
 The temperature of the bubble detector needs to be scanned as fast as possible. Physically, if the ramping is too slow, the detector will degrade during the experiment (e.g. causing false events bubble nucleations). But if the ramping is too fast, the system will induce a large gradient of temperature between the inner and outer regions of the detector, which is undesirable. I will answer how fast we can scan the temperature range between $0$ and $15$ C, while keeping the temperature gradient within the detector smaller than 1°? 
 
 ## Results
+The final temperature gradient for a fast heat transfer (total 1h) and a slow heat transfer (total 15h) is compared as follows.
+![last_shots](./plots/last_shots.png)
 
-
-
-
-
+The evolution of temperature gradients over time for different heat transfer durations is shown as follows.
+![temp_gradients](./plots/temp_gradients.png)
 
